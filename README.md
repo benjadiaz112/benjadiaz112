@@ -18,7 +18,7 @@ Desarrollo aplicaciones web y proyectos de análisis de datos. Me interesa conec
 
 Actualmente curso sexto semestre en Duoc UC. Mi experiencia incluye una plataforma para una marca de ropa, análisis y modelado de popularidad musical, un frontend para clínica y una DApp de trazabilidad. También contribuyo a proyectos colaborativos de seguridad y automatización mediante código, pruebas y documentación.
 
-Busco oportunidades junior, colaboraciones freelance y proyectos remotos en desarrollo de software y datos, compatibles con mis estudios.
+
 
 ## Tecnologías y herramientas
 
