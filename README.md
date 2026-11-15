@@ -4,7 +4,7 @@
 
 **Desarrollo Full Stack · Ciencia de Datos y Machine Learning · Ciberseguridad**
 
-Estudiante de Ingeniería en Informática, mención Ciencia de Datos, en Duoc UC · Chile
+Estudiante de Ingeniería en Informática, mención Ciencia de Datos· Chile
 
 [LinkedIn](https://www.linkedin.com/in/benjamin-diaz-donoso/) · [Proyectos](https://github.com/benjadiaz112?tab=repositories)
 
