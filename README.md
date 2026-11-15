@@ -2,7 +2,7 @@
 
 # Benjamín Díaz Donoso
 
-**Desarrollo Full Stack · Ciencia de Datos · Ciberseguridad**
+**Desarrollo Full Stack · Ciencia de Datos y Machine Learning · Ciberseguridad**
 
 Estudiante de Ingeniería en Informática, mención Ciencia de Datos, en Duoc UC · Chile
 
@@ -16,22 +16,33 @@ Estudiante de Ingeniería en Informática, mención Ciencia de Datos, en Duoc UC
 
 Desarrollo aplicaciones web y proyectos de análisis de datos. Me interesa conectar la interfaz, el backend y los datos para construir herramientas que ayuden a gestionar procesos y tomar decisiones.
 
-Actualmente curso sexto semestre en Duoc UC. Mi experiencia incluye una plataforma para una marca de ropa, análisis y modelado de popularidad musical, un frontend para clínica y una DApp de trazabilidad. También contribuyo a proyectos colaborativos de seguridad y automatización mediante código, pruebas y documentación.
+Actualmente curso sexto semestre en Duoc UC. Mi experiencia incluye plataformas web, aplicaciones Android, dashboards analíticos, modelado de popularidad musical, un frontend para clínica y una DApp de trazabilidad. Desarrollo además Vexum, una iniciativa enfocada en software, automatización e inteligencia artificial. También contribuyo a proyectos colaborativos de seguridad y automatización mediante código, pruebas y documentación.
 
-
+Busco oportunidades junior, colaboraciones freelance y proyectos remotos en desarrollo de software y datos, compatibles con mis estudios.
 
 ## Tecnologías y herramientas
 
-| Área | Tecnologías con las que he trabajado en proyectos o formación |
+| Área | Tecnologías y conocimientos |
 | --- | --- |
-| Desarrollo web | JavaScript, TypeScript, React, Next.js, Node.js, HTML y CSS |
-| Backend | Python, Java, Spring Boot y FastAPI |
-| Datos y machine learning | pandas, NumPy, scikit-learn, Matplotlib, Seaborn y Jupyter Notebook |
-| Bases de datos | SQL, PostgreSQL, MongoDB, Supabase y Firebase |
-| Herramientas | Git, GitHub, Docker, Azure y Google Colab |
-| Visualización | Conocimientos básicos de Microsoft Power BI |
-| Blockchain | Solidity, Remix IDE y JavaScript |
+| Lenguajes | Python, JavaScript, TypeScript, Java, Kotlin, SQL y Solidity |
+| Frontend | React, **Next.js**, HTML5, CSS3, Tailwind CSS y Vite |
+| Backend e integración | Node.js, **Spring Boot**, FastAPI y APIs REST |
+| Desarrollo móvil | Android Studio, Kotlin, Firebase Authentication y Cloud Firestore |
+| Bases de datos SQL | **SQL**, PostgreSQL y Supabase |
+| Bases de datos NoSQL | **MongoDB**, Firebase y Cloud Firestore |
+| Bases de datos vectoriales | **Pinecone** |
+| Machine Learning | scikit-learn, regresión, clustering, K-Means, PCA, HistGradientBoosting, ajuste de hiperparámetros, ensambles y evaluación de modelos |
+| Análisis y preparación de datos | pandas, NumPy, análisis exploratorio, limpieza y transformación de datos, validación cruzada agrupada |
+| Visualización y BI | Streamlit, Plotly, D3.js, Matplotlib, Seaborn y Microsoft Power BI |
+| Big Data y plataformas de datos | **Databricks** |
+| Entornos de datos | Jupyter Notebook y Google Colab |
+| Cloud y contenedores | Microsoft Azure, **Docker**, Firebase y Supabase |
+| Control de versiones y colaboración | Git, GitHub, pull requests, revisión de código y GitHub Actions |
+| Ciberseguridad e IA | Fundamentos de ciberseguridad, auditoría, protección de datos personales, expresiones regulares e IA generativa |
+| Blockchain | Solidity, Remix IDE, contratos inteligentes y DApps académicas |
 | Metodologías | Scrum y CRISP-DM |
+
+Mi trabajo combina proyectos propios, desarrollo académico y contribuciones colaborativas. Los repositorios enlazados muestran el alcance y las tecnologías de cada proyecto.
 
 ## Proyectos destacados
 
@@ -76,6 +87,44 @@ DApp académica desarrollada en equipo para representar el ciclo de vida de un c
 Proyecto de auditoría de seguridad y gestión de licencias orientado al cumplimiento en equipos finales.
 
 **Python · Backend · Ciberseguridad**
+
+### StreamView Analytics — Dashboards para análisis de contenidos
+
+Proyecto académico colaborativo de visualización de datos que reúne una vista ejecutiva y una vista analítica para explorar un catálogo de **31.991 títulos**.
+
+- Filtros por tipo, género, país, idioma, año y calificación.
+- Indicadores, mapas, comparación de títulos, análisis financiero y exploración interactiva con D3.js.
+- Integración de documentación, verificaciones de datos y reportes de Power BI.
+
+**Python · Streamlit · Plotly · D3.js · Power BI**
+
+[Ver proyecto](https://github.com/fluzxks/StreamView_project_exp2)
+
+### Viemms Store — Aplicación Android para tienda de ropa
+
+Aplicación móvil con inicio de sesión y registro, perfiles de cliente y administrador, catálogo conectado a Firestore y gestión de productos.
+
+- Autenticación con Firebase Authentication.
+- Operaciones de creación, consulta, actualización y eliminación de productos.
+- Retroalimentación háptica y pruebas unitarias de ViewModels.
+
+**Android Studio · Kotlin · Firebase Authentication · Cloud Firestore**
+
+Proyecto con repositorio privado.
+
+### Vexum — Presentación de servicios de software
+
+Desarrollo de la landing page de Vexum, una iniciativa enfocada en diseño, desarrollo web, automatización e inteligencia artificial. El proyecto organiza la interfaz mediante componentes y estilos reutilizables.
+
+**React · TypeScript · Vite · Tailwind CSS · Lucide React**
+
+Proyecto con repositorio privado.
+
+### Encriptador AES — Trabajo académico de encriptación
+
+Repositorio académico dedicado a un trabajo de encriptación, con el material del proyecto conservado para su consulta.
+
+[Ver repositorio](https://github.com/benjadiaz112/encriptador-aes)
 
 ## Contribuciones a proyectos colaborativos
 
