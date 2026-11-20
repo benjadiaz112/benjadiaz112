@@ -59,7 +59,7 @@ Desarrollo aplicaciones web y proyectos de análisis de datos. Me interesa conec
 
 [Resultados de Spotify Tracks](https://github.com/benjadiaz112/spotify-tracks-eda/tree/feat/spotify-ep3) · [StreamView Analytics](https://github.com/fluzxks/StreamView_project_exp2)
 
-<img id="actividad" src="dashboard/actividad.svg" width="100%" alt="Actividad en GitHub. Total anual de contribuciones públicas y privadas, repositorios, seguidores, estrellas, forks, días activos y calendario anonimizado." />
+<img id="actividad" src="dashboard/actividad.svg" width="100%" alt="Actividad en GitHub. Total anual de contribuciones públicas y privadas, repositorios, seguidores, estrellas, días activos y calendario anonimizado." />
 
 [Calendario de GitHub](https://github.com/benjadiaz112#contribution-activity) · [Actualización automática del dashboard](https://github.com/benjadiaz112/benjadiaz112/actions/workflows/profile-dashboard.yml)
 

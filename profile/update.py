@@ -82,19 +82,19 @@ def refresh(calendar_html, previous, profile, repos, include_private):
     series = [daily.get(start + timedelta(days=i), 0) for i in range((as_of-start).days + 1)]
     total_since_january = sum(count for day, count in daily.items() if day.year == as_of.year)
 
+    annual = {key: previous[key] for key in ("annual_contributions", "annual_year", "annual_as_of")}
     if include_private:
-        old_total = previous["annual_contributions"]
+        old_total = annual["annual_contributions"]
         if as_of.year == previous["annual_year"] and total_since_january < old_total:
             raise ValueError("Visible total dropped below the saved combined total. Check GitHub visibility.")
-        previous = {
-            **previous,
+        annual = {
             "annual_contributions": total_since_january,
             "annual_year": as_of.year,
             "annual_as_of": as_of.isoformat(),
         }
 
     return {
-        **previous,
+        **annual,
         "calendar_scope": "visible" if include_private else "public",
         "calendar_start": start.isoformat(),
         "calendar_end": as_of.isoformat(),
@@ -102,7 +102,6 @@ def refresh(calendar_html, previous, profile, repos, include_private):
         "followers": profile["followers"],
         "public_repos": len(repos),
         "stars": sum(repo["stargazers_count"] for repo in repos),
-        "forks": sum(repo["forks_count"] for repo in repos),
     }
 
 

@@ -272,10 +272,10 @@ for i,(value,label,note) in enumerate([
     (stats["public_repos"],"Repositorios públicos","Repositorios propios"),
     (stats["followers"],"Seguidores","Perfil de GitHub"),
     (stats["stars"],"Estrellas","Repositorios públicos"),
-    (stats["forks"],"Forks","Repositorios públicos propios"),
     (sum(count>0 for count in counts),"Días con actividad",f"Contribuciones {calendar_scope}"),
 ]):
-    activity += metric_card(43+(i%3)*310,177+(i//3)*165,value,label,note)
+    x = (43,353,663,198,508)[i]
+    activity += metric_card(x,177+(i//3)*165,value,label,note)
 activity += '<g transform="translate(0 165)">'
 activity += '''<defs>
  <linearGradient id="area" x2="0" y2="1"><stop stop-color="#d291ff" stop-opacity=".48"/><stop offset="1" stop-color="#b76dff" stop-opacity=".025"/></linearGradient>
@@ -341,8 +341,8 @@ for i,(title,lines) in enumerate([
     activity += text(x+22,y+60,lines[0],17.5)+text(x+22,y+83,lines[1],17.5)
 svg("actividad","Actividad en GitHub",
     f"{format_metric(annual_contributions)} contribuciones públicas y privadas en {annual_year} al {short_date(annual_as_of)}. "
-    f"{stats['public_repos']} repositorios públicos, {stats['followers']} seguidores, {stats['stars']} estrellas "
-    f"y {stats['forks']} forks públicos. Calendario de contribuciones {calendar_scope}.",
+    f"{stats['public_repos']} repositorios públicos, {stats['followers']} seguidores y {stats['stars']} estrellas. "
+    f"Calendario de contribuciones {calendar_scope}.",
     1361,activity)
 
 
