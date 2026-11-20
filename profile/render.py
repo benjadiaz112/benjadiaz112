@@ -243,7 +243,7 @@ for i,(title,glyph,badges,notes) in enumerate(layers):
     for j,note in enumerate(notes):
         architecture += text(x+14,y+153+j*21,note,15,"#e8d9f6",520)
 svg(
-    "arquitectura",
+    "flujo-arquitectura",
     "Arquitectura de sistemas",
     "Flujo vertical de aplicación cliente, API, servicios de backend y capa de datos. "
     "Cinco capas conectadas de experiencia, API, servicios, datos e infraestructura. "
