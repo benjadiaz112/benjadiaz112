@@ -2,7 +2,7 @@
 
 <img src="dashboard/stack.svg" width="100%" alt="Stack de desarrollo por área. Frontend, backend, datos, cloud, Machine Learning, BI, móvil y blockchain." />
 
-<img src="dashboard/arquitectura.svg" width="100%" alt="Arquitectura de sistemas. Flujo de cliente, API, servicios y datos, con infraestructura, autenticación y validación." />
+<img src="dashboard/arquitectura.svg" width="100%" alt="Arquitectura de sistemas. Flujo vertical de aplicación cliente, API, servicios de backend y capa de datos. Cinco capas conectadas de experiencia, API, servicios, datos e infraestructura." />
 
 <img src="dashboard/ia.svg" width="100%" alt="IA, datos y seguridad. Machine Learning, Vexum, formación en IA generativa, Pinecone y contribuciones de privacidad a DELIA." />
 

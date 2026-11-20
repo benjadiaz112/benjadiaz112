@@ -194,25 +194,65 @@ for i,items in enumerate(tech):
 svg("stack","Universo tecnológico","Stack de frontend, backend, datos, cloud, machine learning, visualización, móvil y blockchain. Lista técnica debajo del panel.",866,stack)
 
 
-architecture = section("DISEÑO DE SISTEMAS","Arquitectura de sistemas","Patrones de diseño que aparecen en mis proyectos.")
-flow = [
-    ("Cliente","React · Next.js · Android","screen"),
-    ("API","REST · Validaciones","api"),
-    ("Servicios","Node · Spring Boot · FastAPI","nodes"),
-    ("Datos","PostgreSQL · Firestore","database"),
+architecture = section("DISEÑO DE SISTEMAS","Arquitectura de sistemas","Flujo de solicitudes · Servicios · Persistencia · Infraestructura")
+
+pipeline = [
+    ("Aplicación cliente","screen"),
+    ("Capa de API","api"),
+    ("Servicios de backend","nodes"),
+    ("Capa de datos","database"),
 ]
-architecture += '<path d="M142 264H850" stroke="#8558b0" stroke-width="5" opacity=".39"/>'
-architecture += flow_line("M142 264H850","#f4b9ff",2.5)
-for i,(label,sub,glyph) in enumerate(flow):
-    x=43+i*233
-    architecture += panel(x,188,212,153,20)
-    architecture += icon(x+87,207,glyph)
-    architecture += text(x+106,277,label,27,"#fff3ff",740,'text-anchor="middle"')
-    architecture += text(x+106,306,sub,14,"#f0d8fc",560,'text-anchor="middle"')
-architecture += flow_line("M500 341v30","#edb9ff",2)
-architecture += card(43,373,448,212,"Entrega y despliegue","Automatización y contenedores","cloud",("GitHub Actions","Docker","Azure"),("Revisión de cambios · Pruebas de CI","Versionado y colaboración con Git"))
-architecture += card(509,373,448,212,"Control y persistencia","Protección de datos y autenticación","shield",("Firebase Auth","SQL","Firestore"),("Validación de entradas · Perfiles de acceso","Almacenamiento según el caso de uso"))
-svg("arquitectura","Arquitectura de sistemas","Diagrama de cliente, APIs REST, servicios y datos. Incluye tecnologías de entrega, infraestructura, autenticación y persistencia.",614,architecture)
+for i,(label,glyph) in enumerate(pipeline):
+    y=179+i*48
+    architecture += panel(374,y,252,38,11)
+    architecture += icon(389,y+7,glyph,.59)
+    architecture += text(423,y+25,label,19,"#fff3ff",690)
+    architecture += f'<path d="M500 {y+38}v10" stroke="#d7a6ff" stroke-width="1.5" opacity=".63"/>'
+    architecture += f"""<circle class="motion-decoration" cx="500" cy="{y+43}" r="3.2" fill="#f7cbff">
+      <animate attributeName="opacity" values=".24;1;.24" begin="{i*.18:.2f}s" dur="2.5s" repeatCount="indefinite"/>
+    </circle>"""
+
+bus_y=388
+architecture += '<path d="M500 361v27M122 388H878" fill="none" stroke="#b17ae0" stroke-opacity=".52" stroke-width="1.5"/>'
+architecture += flow_line("M122 388H878","#e0adff",1.5)
+architecture += """<circle class="motion-decoration" r="3.9" fill="#fff0ff">
+  <animateMotion path="M122 388H878" dur="6s" repeatCount="indefinite"/>
+</circle>"""
+
+layers = [
+    ("Experiencia","screen",("React","Next.js"),("Componentes UI","Android · Kotlin","Interfaces web")),
+    ("Capa de API","api",("REST","Auth"),("Validación de entrada","Firebase Authentication","Integración de clientes")),
+    ("Servicios","nodes",("Node.js","Python"),("Spring Boot · FastAPI","Lógica de negocio","Procesamiento de datos")),
+    ("Datos","database",("SQL","NoSQL"),("PostgreSQL · Supabase","MongoDB · Firestore","Búsqueda con Pinecone")),
+    ("Infraestructura","cloud",("Azure","Docker"),("GitHub Actions","Pruebas de CI","Versionado con Git")),
+]
+for i,(title,glyph,badges,notes) in enumerate(layers):
+    x,y,w,h=30+i*189,413,184,220
+    center=x+w//2
+    architecture += f'<path d="M{center} {bus_y}v{y-bus_y}" stroke="#be8bf2" stroke-opacity=".57"/>'
+    architecture += f'<circle cx="{center}" cy="{bus_y}" r="2.8" fill="#dcb0fa"/>'
+    architecture += panel(x,y,w,h,15)
+    architecture += scan_sweep(x,y,w,h,15,phase=-i*1.4,period=8.5)
+    architecture += f'<path d="M{x+12} {y+2}h{w-24}" stroke="url(#accent)" stroke-width="1.7"/>'
+    architecture += icon(center-20,y+18,glyph)
+    architecture += text(center,y+82,title,22,"#fff4ff",735,'text-anchor="middle"')
+    for j,badge in enumerate(badges):
+        bx=x+13+j*81
+        architecture += f'<rect x="{bx}" y="{y+99}" width="77" height="25" rx="6" fill="#633b8c" fill-opacity=".52" stroke="#bf8ce9" stroke-opacity=".48"/>'
+        architecture += text(bx+38.5,y+116,badge,14,"#f7dfff",700,'text-anchor="middle"')
+    for j,note in enumerate(notes):
+        architecture += text(x+14,y+153+j*21,note,15,"#e8d9f6",520)
+svg(
+    "arquitectura",
+    "Arquitectura de sistemas",
+    "Flujo vertical de aplicación cliente, API, servicios de backend y capa de datos. "
+    "Cinco capas conectadas de experiencia, API, servicios, datos e infraestructura. "
+    "React, Next.js y Kotlin en cliente. REST y Firebase Authentication para integración. "
+    "Node.js, Python, Spring Boot y FastAPI en servicios. PostgreSQL, Supabase, MongoDB, "
+    "Firestore y Pinecone en datos. Azure, Docker, Git y GitHub Actions en infraestructura.",
+    666,
+    architecture,
+)
 
 
 ai_cards = [
