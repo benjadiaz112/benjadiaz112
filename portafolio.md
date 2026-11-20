@@ -21,6 +21,8 @@
 
 - **Machine Learning.** Preparación de datos, regresión, segmentación y evaluación de modelos en [Spotify Tracks](https://github.com/benjadiaz112/spotify-tracks-eda).
 - **IA generativa y automatización.** Desarrollo Vexum, una iniciativa de software, automatización e IA. Mi formación incluye IA generativa y mi stack de datos incluye Pinecone como base vectorial.
+- **RAG y LangChain.** Recuperación de información, búsqueda semántica y uso del contenido recuperado como contexto para las respuestas. [Documentación de LangChain](https://docs.langchain.com/oss/python/learn)
+- **MCP.** Protocolo para conectar aplicaciones de IA con herramientas y recursos de datos. [Documentación de MCP](https://py.sdk.modelcontextprotocol.io/)
 - **Seguridad en aplicaciones de IA.** En [DELIA](https://github.com/andres-olguin/DELIA) contribuí al enmascaramiento de identificadores de México y Bolivia, con validaciones y pruebas. También trabajé en benchmarks y reproducibilidad. [Cambio integrado](https://github.com/andres-olguin/DELIA/pull/20) · [Propuesta de CI](https://github.com/andres-olguin/DELIA/pull/67)
 
 ## Proyectos y repositorios

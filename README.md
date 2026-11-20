@@ -4,7 +4,7 @@
 
 <img src="dashboard/flujo-arquitectura.svg" width="100%" alt="Arquitectura de sistemas. Flujo vertical de aplicación cliente, API, servicios de backend y capa de datos. Cinco capas conectadas de experiencia, API, servicios, datos e infraestructura." />
 
-<img src="dashboard/ia.svg" width="100%" alt="IA, datos y seguridad. Machine Learning, Vexum, formación en IA generativa, Pinecone y contribuciones de privacidad a DELIA." />
+<img src="dashboard/ingenieria-ia.svg" width="100%" alt="Ingeniería de IA. IA generativa, RAG y LangChain, MCP, automatización con IA, Machine Learning y seguridad en aplicaciones de IA." />
 
 <img src="dashboard/proyectos.svg" width="100%" alt="Proyectos destacados. Spotify Tracks, Ryde, Clínica dental y facial, Trazabilidad de fruta, StreamView Analytics, Viemms Store, Vexum y Security Auditor & Licensing." />
 

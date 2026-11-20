@@ -255,19 +255,77 @@ svg(
 )
 
 
+ai_icons = {
+    "retrieval": "M7 5h18v23H7z M13 11h8 M13 16h7 M18 27a7 7 0 1 1 14 0 7 7 0 0 1-14 0 M30 32l6 6",
+    "mcp": "M5 22 19 8a5 5 0 0 1 7 7L15 26 M17 30l13-13a5 5 0 0 1 7 7L26 35l-6-6",
+    "automation": "M21 4 9 22h10l-2 13 14-19H20z M5 30v5h6 M30 7h5v5",
+}
+
+def ai_icon(x, y, glyph, phase):
+    path = ai_icons[glyph] if glyph in ai_icons else icons[glyph]
+    return f"""<g transform="translate({x} {y})">
+  <circle cx="25" cy="25" r="23" fill="#8a62db" fill-opacity=".13" stroke="#b991fc" stroke-opacity=".42"/>
+  <g class="motion-decoration" aria-hidden="true">
+    <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25"
+      begin="{phase}s" dur="8s" repeatCount="indefinite"/>
+    <path d="M3 20A23 23 0 0 1 25 2" fill="none" stroke="#9bc6ff" stroke-width="1.3"/>
+    <circle cx="25" cy="2" r="2.7" fill="#bcd9ff"/>
+  </g>
+  <g class="motion-decoration">
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0;0 2;0 0"
+      begin="{phase}s" dur="4.4s" repeatCount="indefinite"/>
+    <path transform="translate(10 10) scale(.75)" d="{path}" fill="none" stroke="#f3d9ff"
+      stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <path class="ai-icon-still" transform="translate(10 10) scale(.75)" d="{path}" fill="none"
+    stroke="#f3d9ff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+</g>"""
+
+
 ai_cards = [
+    ("IA generativa","Modelos de lenguaje","api",("LLM","Vexum"),("Aplicaciones con LLM","Formación en IA generativa")),
+    ("RAG y LangChain","Recuperación y generación","retrieval",("LangChain","Pinecone"),("Búsqueda semántica","Contexto para respuestas")),
+    ("MCP","Model Context Protocol","mcp",("Clientes","Servidores"),("Conexión de herramientas","Recursos y contexto para IA")),
+    ("Automatización con IA","Flujos y orquestación","automation",("Vexum","APIs"),("Orquestación de tareas","Integración de herramientas")),
     ("Machine Learning","Modelado y evaluación","nodes",("Python","scikit-learn"),("Regresión · K-Means · PCA","Ensambles · Validación")),
-    ("IA generativa","Software y automatización","api",("Vexum","Pinecone"),("Iniciativa de software e IA","Formación en IA generativa")),
     ("Seguridad en IA","Gobernanza y privacidad","shield",("DELIA","Python"),("Enmascaramiento de datos","Pruebas y benchmarks")),
 ]
-ai = section("INTELIGENCIA ARTIFICIAL","Ingeniería de IA","Modelado, automatización y protección de datos.")
-ai += '<path d="M180 213H820M180 213v26m320-26v26m320-26v26" fill="none" stroke="#9d62c8" stroke-width="2"/>'
-ai += flow_line("M180 213H820","#edb9ff",2.5)
-for x in (180,500,820):
-    ai += f'<circle cx="{x}" cy="213" r="5" fill="#ffceff"/>'
-for i,items in enumerate(ai_cards):
-    ai += card(43+i*310,242,294,211,*items)
-svg("ia","Ingeniería de IA","Machine learning, Vexum e IA generativa, bases de datos vectoriales con Pinecone y contribuciones de privacidad en DELIA.",484,ai)
+ai = section("INTELIGENCIA ARTIFICIAL","Ingeniería de IA","Modelos, recuperación de información y automatización.")
+ai += '''
+<style>
+.ai-icon-still {display:none}
+@media (prefers-reduced-motion: reduce) {.ai-icon-still {display:inline}}
+</style>
+'''
+for line_y in (202,475):
+    ai += f'<path d="M190 {line_y}H810M190 {line_y}v21m310-21v21m310-21v21" fill="none" stroke="#9b81d8" stroke-width="1.5"/>'
+    ai += flow_line(f"M190 {line_y}H810","#a9c9ff",2)
+    for x in (190,500,810):
+        ai += f'<circle cx="{x}" cy="{line_y}" r="3.2" fill="#c1ceff"/>'
+for i,(title,subtitle,glyph,badges,notes) in enumerate(ai_cards):
+    x,y=43+(i%3)*310,223+(i//3)*273
+    ai += panel(x,y,294,230,20)
+    ai += scan_sweep(x,y,294,230,20,phase=-i*1.07,period=8.8)
+    ai += f'<path d="M{x+12} {y+2}h270" stroke="url(#accent)" stroke-width="1.7" opacity=".76"/>'
+    ai += ai_icon(x+19,y+15,glyph,round(-i*.64,2))
+    ai += text(x+21,y+88,title,26,"#fff4ff",735)
+    ai += text(x+21,y+115,subtitle,18,"#e7d4ff",560)
+    badge_x=x+21
+    for label in badges:
+        badge,width=chip(badge_x,y+132,label)
+        ai += badge
+        badge_x += width+8
+    for j,note in enumerate(notes):
+        ai += text(x+21,y+191+22*j,note,18)
+svg(
+    "ingenieria-ia",
+    "Ingeniería de IA",
+    "Seis áreas de trabajo e interés: IA generativa, RAG y LangChain con Pinecone, MCP para conectar herramientas, "
+    "automatización con IA en el enfoque de Vexum, Machine Learning con Python y scikit-learn, "
+    "y contribuciones de privacidad en DELIA. Cada tarjeta tiene un icono animado.",
+    756,
+    ai,
+)
 
 projects = [
     ("Spotify Tracks","Modelado de popularidad musical","Python · scikit-learn"),
