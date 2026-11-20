@@ -281,7 +281,8 @@ def counter(x, y, value, decimals=0):
     return (
         f'<g transform="translate({x} {y})">'
         '<g class="counter-motion" clip-path="url(#counter-window)">'
-        f'<g class="counter-roll" style="animation-timing-function:steps({frames},end);--end:{-frames*stride}px">{sequence}</g>'
+        f'<g class="counter-roll" transform="translate(0 {-frames*stride})" '
+        f'style="animation-timing-function:steps({frames},end);--end:{-frames*stride}px">{sequence}</g>'
         '</g>'
         f'<g class="counter-static">{number(value, 63)}</g></g>'
     )
