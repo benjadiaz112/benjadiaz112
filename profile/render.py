@@ -14,6 +14,7 @@ assets = root / "dashboard"
 assets.mkdir(exist_ok=True)
 
 def text(x, y, label, size=22, color="#e6ddf8", weight=400, extra=""):
+    size = min(size, max(15, round(size * .88, 1)))
     return f'<text x="{x}" y="{y}" font-size="{size}" font-weight="{weight}" fill="{color}" {extra}>{escape(label)}</text>'
 
 def eyebrow(x,y,label):
@@ -21,6 +22,18 @@ def eyebrow(x,y,label):
 
 def panel(x,y,w,h, radius=25):
     return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{radius}" fill="url(#glass)" stroke="url(#edge)"/><path d="M{x+radius} {y+1}h{w-2*radius}" stroke="url(#shine)"/>'
+
+def scan_sweep(x, y, width, height, radius=20, phase=0, period=6.4):
+    clip = f"sweep-{x}-{y}"
+    return f'''<g transform="translate({x} {y})" aria-hidden="true">
+  <clipPath id="{clip}"><rect width="{width}" height="{height}" rx="{radius}"/></clipPath>
+  <g clip-path="url(#{clip})">
+    <g class="scan-beam" style="--travel:{width}px;--phase:{phase}s;--period:{period}s">
+      <rect width="112" height="{height}" fill="url(#scanner-glow)"/>
+      <path d="M110 0v{height}" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
+    </g>
+  </g>
+</g>'''
 
 def section(kicker, heading, subtitle):
     centered = 'text-anchor="middle"'
@@ -41,6 +54,12 @@ def svg(name, title, description, h, body, hero=False):
   <linearGradient id="edge" x2=".85" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#efd9ff" stop-opacity=".65"/><stop offset=".45" stop-color="#c3a0fc" stop-opacity=".24"/><stop offset="1" stop-color="#ad72ed" stop-opacity=".34"/></linearGradient>
   <linearGradient id="shine"><stop stop-color="#e5ceff" stop-opacity="0"/><stop offset=".32" stop-color="#f8e7ff" stop-opacity=".8"/><stop offset="1" stop-color="#e5ceff" stop-opacity="0"/></linearGradient>
   <linearGradient id="accent"><stop stop-color="#f0bfff"/><stop offset="1" stop-color="#a088ff"/></linearGradient>
+  <linearGradient id="scanner-glow">
+    <stop stop-color="#bd77ff" stop-opacity="0"/>
+    <stop offset=".55" stop-color="#bd77ff" stop-opacity=".06"/>
+    <stop offset=".95" stop-color="#d79cff" stop-opacity=".29"/>
+    <stop offset="1" stop-color="#edbeff" stop-opacity=".09"/>
+  </linearGradient>
   <linearGradient id="metal" x2=".35" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#ffedff"/><stop offset=".22" stop-color="#d7a0ff"/><stop offset=".47" stop-color="#6242af" stop-opacity=".12"/><stop offset=".72" stop-color="#9c61f6" stop-opacity=".46"/><stop offset="1" stop-color="#f9d7ff"/></linearGradient>
   <radialGradient id="orb" cx=".37" cy=".26" r=".71"><stop stop-color="#eedaff" stop-opacity=".71"/><stop offset=".35" stop-color="#a758ed" stop-opacity=".34"/><stop offset=".69" stop-color="#38236e" stop-opacity=".11"/><stop offset="1" stop-color="#e4b3ff" stop-opacity=".5"/></radialGradient>
   <pattern id="dots" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M0 25V0H25" stroke="#bc94ed" stroke-opacity=".11" fill="none"/><circle cx="3" cy="3" r="1" fill="#e0c8ff" opacity=".18"/></pattern>
@@ -52,6 +71,8 @@ def svg(name, title, description, h, body, hero=False):
   .counter-roll {{ animation: count-up 8s infinite; }}
   .graph-reveal {{ animation: reveal 8s cubic-bezier(.25,.6,.35,1) infinite; }}
   .graph-scan {{ animation: scan 8s ease-in-out infinite; }}
+  .scan-beam {{ opacity:0; animation: sweep-across var(--period) linear var(--phase) infinite; }}
+  .orbit-signal {{ transform-origin:0 0; animation: orbit-signal 9s linear infinite; }}
   .cell-beat {{ animation: cell-beat 5.5s ease-in-out infinite; }}
   .signal-flow {{stroke-dasharray:8 11;animation:signal-flow 2.8s linear infinite}}
   .gauge-fill {{animation:gauge 8s ease-out infinite}}
@@ -64,11 +85,17 @@ def svg(name, title, description, h, body, hero=False):
   }}
   @keyframes reveal {{0% {{transform:scaleX(.001)}} 42%,100% {{transform:scaleX(1)}}}}
   @keyframes scan {{0% {{transform:translateX(-161px);opacity:0}} 8% {{opacity:1}} 86%,100% {{transform:translateX(902px);opacity:0}}}}
+  @keyframes sweep-across {{
+    0% {{transform:translateX(-114px);opacity:0}}
+    9%,65% {{opacity:1}}
+    75%,100% {{transform:translateX(var(--travel));opacity:0}}
+  }}
+  @keyframes orbit-signal {{ to {{transform:rotate(360deg)}} }}
   @keyframes cell-beat {{0%,46%,100% {{opacity:.58}} 20% {{opacity:1}}}}
   @keyframes fill-meter {{0% {{transform:scaleX(.01)}} 39%,100% {{transform:scaleX(1)}}}}
   @media (prefers-reduced-motion: reduce) {{
-    .counter-roll,.graph-reveal,.graph-scan,.cell-beat,.metric-fill,.signal-flow,.gauge-fill {{animation:none}}
-    .counter-motion,.graph-scan {{display:none}}
+    .counter-roll,.graph-reveal,.graph-scan,.scan-beam,.orbit-signal,.cell-beat,.metric-fill,.signal-flow,.gauge-fill {{animation:none}}
+    .counter-motion,.graph-scan,.scan-beam,.orbit-signal {{display:none}}
     .counter-static {{display:inline}}
   }}
 </style>
@@ -87,6 +114,11 @@ orbital = '''
 <g transform="translate(785 191)">
   <circle r="185" fill="url(#aura)"/>
   <circle r="147" fill="none" stroke="#cdaaee" stroke-opacity=".25" stroke-dasharray="2 8"/>
+  <g class="orbit-signal" aria-hidden="true">
+    <path d="M-105 -102 A147 147 0 0 1 0 -147" fill="none" stroke="#d8a2ff" stroke-opacity=".6" stroke-width="2"/>
+    <circle cy="-147" r="7" fill="#da96ff" opacity=".25"/>
+    <circle cy="-147" r="3.3" fill="#fff0ff"/>
+  </g>
   <circle r="118" fill="url(#orb)" stroke="url(#metal)" stroke-width="2"/>
   <g transform="rotate(-27)" fill="none">
     <ellipse rx="165" ry="72" stroke="#a56af6" stroke-width="18" opacity=".17"/>
@@ -106,6 +138,7 @@ hero = orbital + eyebrow(43,62,"PORTAFOLIO DE DESARROLLO") + text(39,149,"Benjam
 hero += text(45,278,"Full Stack · Ciencia de Datos",28,"#fff2ff",650) + text(45,313,"Machine Learning · Ciberseguridad",26,"#e4d5f6",520)
 hero += '<path d="M45 348H955" stroke="#c9a4fd" opacity=".34"/>' + text(45,389,"@benjadiaz112",21,"#f0d9ff",650) + text(955,389,"CHILE",15,"#dfc5f3",700,'text-anchor="end" letter-spacing="2"')
 hero += panel(43,429,914,267)
+hero += scan_sweep(43,429,914,267,25,phase=-2,period=13)
 hero += eyebrow(66,466,"SOBRE MÍ")
 hero += text(66,507,"Desarrollo aplicaciones web y proyectos de análisis de datos.",28,"#fff4ff",700)
 hero += text(66,543,"Conecto la interfaz, el backend y los datos para construir herramientas",24)
@@ -146,6 +179,7 @@ def chip(x,y,label):
 
 def card(x,y,w,h,title,descriptor,glyph,tools,lines):
     block = panel(x,y,w,h,20)
+    block += scan_sweep(x,y,w,h,phase=-(x+y)/190,period=9.5)
     block += f'<path d="M{x+7} {y+2}h{w-14}" stroke="url(#accent)" stroke-width="2.2" opacity=".8"/>'
     block += icon(x+w-49,y+22,glyph,.73)
     block += text(x+21,y+43,title,24 if w<320 else 27,"#fff4ff",735)
@@ -223,6 +257,7 @@ p = section("PORTAFOLIO","Proyectos destacados","Aplicaciones web, análisis de 
 for i,(title,sub,techs) in enumerate(projects):
     x,y=43+(i%2)*466,181+(i//2)*112
     p += panel(x,y,448,100,21)
+    p += scan_sweep(x,y,448,100,21,phase=-(i+1)*1.1,period=11)
     p += text(x+19,y+34,title,23,"#fff4ff",710)
     p += text(x+19,y+60,sub,17.5)
     p += text(x+19,y+83,techs,16,"#e2bcff",630)
@@ -255,6 +290,7 @@ def counter(x, y, value, decimals=0):
 def metric_card(x, y, value, label, note, decimals=0):
     return (
         panel(x,y,294,153)
+        + scan_sweep(x,y,294,153,25,phase=-(x/200+y/145),period=6.2)
         + counter(x+20,y+5,value,decimals)
         + text(x+23,y+99,label,22,"#f2d9ff",710)
         + text(x+23,y+126,note,16.5)
@@ -316,6 +352,7 @@ activity += f'''<g transform="translate({cx} {cy})">
   <path d="{path}" fill="none" stroke="#e7bbff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
  </g>
 </g>'''
+activity += scan_sweep(cx,cy,cw,ch,4,phase=-1.8,period=7.9)
 for i,(x,y) in enumerate(points):
     if chart_counts[i] >= 10:
         activity += f'<circle class="cell-beat" cx="{cx+x:.2f}" cy="{cy+y:.2f}" r="4.5" fill="#fff0ff" style="animation-delay:{i*.24:.2f}s"/>'
@@ -366,6 +403,7 @@ for i,(value,label,sub,decimals) in enumerate([
 ]):
     metrics += metric_card(43+310*i,184,value,label,sub,decimals)
 metrics += panel(43,361,448,233,22)
+metrics += scan_sweep(43,361,448,233,22,phase=-.9,period=7.8)
 metrics += text(64,403,"Error de predicción",25,"#fff2ff",730)
 metrics += text(64,433,"Escala de 0 a 10 puntos de popularidad",16)
 for i,(label,value) in enumerate([("MAE",5.02),("RMSE",8.50)]):
@@ -374,6 +412,7 @@ for i,(label,value) in enumerate([("MAE",5.02),("RMSE",8.50)]):
     metrics += text(466,y,format_metric(value,2),20,"#fff4ff",720,'text-anchor="end"')
     metrics += f'<g transform="translate(67 {y+14})"><path d="M0 0h390" stroke="#6d4989" stroke-width="8" stroke-linecap="round"/><path class="metric-fill" d="M0 0h{value*39:.2f}" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/></g>'
 metrics += panel(509,361,448,233,22)
+metrics += scan_sweep(509,361,448,233,22,phase=-3.3,period=8.6)
 metrics += text(531,403,"Ajuste del modelo",25,"#fff2ff",730)
 metrics += text(531,446,"R² · Spotify Tracks",19,"#eed8fa",630)
 metrics += text(531,508,"0,830",47,"#fff0ff",770)
@@ -383,6 +422,12 @@ metrics += """
   <circle cx="862" cy="484" r="65" fill="none" stroke="#563473" stroke-width="10"/>
   <circle class="gauge-fill" cx="862" cy="484" r="65" fill="none" stroke="url(#accent)" stroke-width="10"
           stroke-linecap="round" pathLength="100" stroke-dasharray="100 100" stroke-dashoffset="17" style="--target:17"/>
+</g>
+<g transform="translate(862 484)" aria-hidden="true">
+  <g class="orbit-signal" style="animation-duration:6.5s">
+    <path d="M-41 -61A74 74 0 0 1 0 -74" fill="none" stroke="#d7a2fa" stroke-opacity=".7" stroke-width="2"/>
+    <circle cy="-74" r="3.5" fill="#fff0ff"/>
+  </g>
 </g>
 """
 metrics += text(862,491,"R²",23,"#faeaff",740,'text-anchor="middle"')
@@ -418,6 +463,7 @@ formation += text(67,291,"En curso · Sexto semestre",20)
 for i,(heading, first_line, second_line, provider) in enumerate(certificates):
     x,y=43+(i%2)*466,336+(i//2)*167
     formation += panel(x,y,448,152,20)
+    formation += scan_sweep(x,y,448,152,phase=-(i+1)*1.4,period=11.5)
     formation += text(x+22,y+38,heading,26,"#fff3ff",740)
     formation += text(x+22,y+70,first_line,21)
     formation += text(x+22,y+96,second_line,21)
