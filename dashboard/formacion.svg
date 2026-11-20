@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 851" role="img" aria-labelledby="title desc" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+<title id="title">Formación y certificaciones</title><desc id="desc">Ingeniería en Informática, mención Ciencia de Datos en Duoc UC. En curso, sexto semestre. Usando la IA Generativa. Duoc UC · 36 horas · 2026. Ethical Hacking Professional Certification. CertiProf · 2026. Cyber Security Foundation Professional Certificate. CertiProf · 2026. Cybersecurity Awareness Professional Certification. CertiProf · 2026. Microsoft Certified Azure Fundamentals. Microsoft · 2026. Bases de datos NoSQL y modelado de documentos. Formación complementaria.</desc>
+<defs>
+  <linearGradient id="background" x2="1" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#140b26"/><stop offset=".52" stop-color="#24143d"/><stop offset="1" stop-color="#10091d"/></linearGradient>
+  <radialGradient id="aura"><stop stop-color="#a758ed" stop-opacity=".38"/><stop offset="1" stop-color="#a758ed" stop-opacity="0"/></radialGradient>
+  <linearGradient id="glass" x2=".3" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#eacaff" stop-opacity=".18"/><stop offset=".37" stop-color="#9975ca" stop-opacity=".095"/><stop offset="1" stop-color="#130b26" stop-opacity=".56"/></linearGradient>
+  <linearGradient id="edge" x2=".85" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#efd9ff" stop-opacity=".65"/><stop offset=".45" stop-color="#c3a0fc" stop-opacity=".24"/><stop offset="1" stop-color="#ad72ed" stop-opacity=".34"/></linearGradient>
+  <linearGradient id="shine"><stop stop-color="#e5ceff" stop-opacity="0"/><stop offset=".32" stop-color="#f8e7ff" stop-opacity=".8"/><stop offset="1" stop-color="#e5ceff" stop-opacity="0"/></linearGradient>
+  <linearGradient id="accent"><stop stop-color="#f0bfff"/><stop offset="1" stop-color="#a088ff"/></linearGradient>
+  <linearGradient id="metal" x2=".35" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#ffedff"/><stop offset=".22" stop-color="#d7a0ff"/><stop offset=".47" stop-color="#6242af" stop-opacity=".12"/><stop offset=".72" stop-color="#9c61f6" stop-opacity=".46"/><stop offset="1" stop-color="#f9d7ff"/></linearGradient>
+  <radialGradient id="orb" cx=".37" cy=".26" r=".71"><stop stop-color="#eedaff" stop-opacity=".71"/><stop offset=".35" stop-color="#a758ed" stop-opacity=".34"/><stop offset=".69" stop-color="#38236e" stop-opacity=".11"/><stop offset="1" stop-color="#e4b3ff" stop-opacity=".5"/></radialGradient>
+  <pattern id="dots" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M0 25V0H25" stroke="#bc94ed" stroke-opacity=".11" fill="none"/><circle cx="3" cy="3" r="1" fill="#e0c8ff" opacity=".18"/></pattern>
+  <clipPath id="frame"><rect width="1000" height="851" rx="31"/></clipPath>
+  <clipPath id="counter-window"><rect width="253" height="70"/></clipPath>
+</defs>
+<style>
+  .counter-static {display:none}
+  .counter-roll { animation: count-up 8s infinite; }
+  .graph-reveal { animation: reveal 8s cubic-bezier(.25,.6,.35,1) infinite; }
+  .graph-scan { animation: scan 8s ease-in-out infinite; }
+  .cell-beat { animation: cell-beat 5.5s ease-in-out infinite; }
+  .signal-flow {stroke-dasharray:8 11;animation:signal-flow 2.8s linear infinite}
+  .gauge-fill {animation:gauge 8s ease-out infinite}
+  @keyframes signal-flow {to {stroke-dashoffset:-38}}
+  @keyframes gauge {0% {stroke-dashoffset:100} 45%,100% {stroke-dashoffset:var(--target)}}
+  .metric-fill { transform-origin:0 0; animation: fill-meter 8s cubic-bezier(.25,.6,.35,1) infinite; }
+  @keyframes count-up {
+    0% { transform:translateY(0); }
+    35%,100% { transform:translateY(var(--end)); }
+  }
+  @keyframes reveal {0% {transform:scaleX(.001)} 42%,100% {transform:scaleX(1)}}
+  @keyframes scan {0% {transform:translateX(-161px);opacity:0} 8% {opacity:1} 86%,100% {transform:translateX(902px);opacity:0}}
+  @keyframes cell-beat {0%,46%,100% {opacity:.58} 20% {opacity:1}}
+  @keyframes fill-meter {0% {transform:scaleX(.01)} 39%,100% {transform:scaleX(1)}}
+  @media (prefers-reduced-motion: reduce) {
+    .counter-roll,.graph-reveal,.graph-scan,.cell-beat,.metric-fill,.signal-flow,.gauge-fill {animation:none}
+    .counter-motion,.graph-scan {display:none}
+    .counter-static {display:inline}
+  }
+</style>
+<g clip-path="url(#frame)">
+<rect width="1000" height="851" fill="url(#background)"/>
+<ellipse cx="880" cy="15" rx="480" ry="255" fill="url(#aura)"/>
+<ellipse cx="230" cy="851" rx="470" ry="169" fill="url(#aura)" opacity=".56"/>
+<rect width="1000" height="851" fill="url(#dots)"/>
+<rect x="1" y="1" width="998" height="849" rx="30" fill="none" stroke="url(#edge)"/>
+<path d="M45 21H22V45M955 21h23v24M22 806v24h23M978 806v24h-23" stroke="#d5a4fc" stroke-opacity=".72" fill="none" stroke-width="1.25"/>
+<text x="500" y="49" font-size="15" font-weight="700" fill="#d6baff" text-anchor="middle" letter-spacing="2.7">ESTUDIOS</text><text x="500" y="104" font-size="48" font-weight="750" fill="#fff6ff" text-anchor="middle">Formación y certificaciones</text><text x="500" y="143" font-size="20.5" font-weight="480" fill="#e6ddf8" text-anchor="middle">Ciencia de Datos, IA, ciberseguridad y cloud.</text><path d="M231 161H769" stroke="url(#shine)" stroke-width="1.5"/><rect x="43" y="185" width="914" height="133" rx="25" fill="url(#glass)" stroke="url(#edge)"/><path d="M68 186h864" stroke="url(#shine)"/><g transform="translate(868 222) scale(1.2)" fill="none" stroke="#edcaff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5v30h30 M9 26l7-9 6 4 11-13 M27 8h6v6"/></g><text x="67" y="227" font-size="30" font-weight="750" fill="#fff4ff" >Ingeniería en Informática</text><text x="67" y="262" font-size="24" font-weight="620" fill="#f1d7ff" >Mención Ciencia de Datos · Duoc UC</text><text x="67" y="291" font-size="20" font-weight="400" fill="#e6ddf8" >En curso · Sexto semestre</text><rect x="43" y="336" width="448" height="152" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M63 337h408" stroke="url(#shine)"/><text x="65" y="374" font-size="26" font-weight="740" fill="#fff3ff" >IA generativa</text><text x="65" y="406" font-size="21" font-weight="400" fill="#e6ddf8" >Usando la IA Generativa</text><text x="65" y="432" font-size="21" font-weight="400" fill="#e6ddf8" ></text><text x="65" y="465" font-size="18" font-weight="620" fill="#ead2ff" >Duoc UC · 36 horas · 2026</text><rect x="509" y="336" width="448" height="152" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M529 337h408" stroke="url(#shine)"/><text x="531" y="374" font-size="26" font-weight="740" fill="#fff3ff" >CEHPC</text><text x="531" y="406" font-size="21" font-weight="400" fill="#e6ddf8" >Ethical Hacking Professional</text><text x="531" y="432" font-size="21" font-weight="400" fill="#e6ddf8" >Certification</text><text x="531" y="465" font-size="18" font-weight="620" fill="#ead2ff" >CertiProf · 2026</text><rect x="43" y="503" width="448" height="152" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M63 504h408" stroke="url(#shine)"/><text x="65" y="541" font-size="26" font-weight="740" fill="#fff3ff" >CSFPC</text><text x="65" y="573" font-size="21" font-weight="400" fill="#e6ddf8" >Cyber Security Foundation</text><text x="65" y="599" font-size="21" font-weight="400" fill="#e6ddf8" >Professional Certificate</text><text x="65" y="632" font-size="18" font-weight="620" fill="#ead2ff" >CertiProf · 2026</text><rect x="509" y="503" width="448" height="152" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M529 504h408" stroke="url(#shine)"/><text x="531" y="541" font-size="26" font-weight="740" fill="#fff3ff" >CAPC</text><text x="531" y="573" font-size="21" font-weight="400" fill="#e6ddf8" >Cybersecurity Awareness</text><text x="531" y="599" font-size="21" font-weight="400" fill="#e6ddf8" >Professional Certification</text><text x="531" y="632" font-size="18" font-weight="620" fill="#ead2ff" >CertiProf · 2026</text><rect x="43" y="670" width="448" height="152" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M63 671h408" stroke="url(#shine)"/><text x="65" y="708" font-size="26" font-weight="740" fill="#fff3ff" >AZ-900</text><text x="65" y="740" font-size="21" font-weight="400" fill="#e6ddf8" >Microsoft Certified</text><text x="65" y="766" font-size="21" font-weight="400" fill="#e6ddf8" >Azure Fundamentals</text><text x="65" y="799" font-size="18" font-weight="620" fill="#ead2ff" >Microsoft · 2026</text><rect x="509" y="670" width="448" height="152" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M529 671h408" stroke="url(#shine)"/><text x="531" y="708" font-size="26" font-weight="740" fill="#fff3ff" >MongoDB</text><text x="531" y="740" font-size="21" font-weight="400" fill="#e6ddf8" >Bases de datos NoSQL</text><text x="531" y="766" font-size="21" font-weight="400" fill="#e6ddf8" >y modelado de documentos</text><text x="531" y="799" font-size="18" font-weight="620" fill="#ead2ff" >Formación complementaria</text>
+</g></svg>

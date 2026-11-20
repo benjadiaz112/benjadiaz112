@@ -1,17 +1,25 @@
-<div align="center">
+<img src="dashboard/portada.svg" width="100%" alt="Benjamín Díaz Donoso. Desarrollo aplicaciones web y proyectos de análisis de datos. Conecto la interfaz, el backend y los datos para construir herramientas que ayuden a gestionar procesos y tomar decisiones. Estudio Ingeniería en Informática, mención Ciencia de Datos, en Duoc UC. Busco oportunidades junior, colaboraciones freelance y proyectos remotos." />
 
-<img src="dashboard/portada.svg" width="100%" alt="Benjamín Díaz Donoso. Desarrollo Full Stack, Ciencia de Datos, Machine Learning y Ciberseguridad." />
+<img src="dashboard/stack.svg" width="100%" alt="Stack de desarrollo por área. Frontend, backend, datos, cloud, Machine Learning, BI, móvil y blockchain." />
 
-[LinkedIn](https://www.linkedin.com/in/benjamin-diaz-donoso/) · [Repositorios](https://github.com/benjadiaz112?tab=repositories) · [Actividad en GitHub](https://github.com/benjadiaz112#contribution-activity)
+<img src="dashboard/arquitectura.svg" width="100%" alt="Arquitectura de sistemas. Flujo de cliente, API, servicios y datos, con infraestructura, autenticación y validación." />
 
-</div>
+<img src="dashboard/ia.svg" width="100%" alt="IA, datos y seguridad. Machine Learning, Vexum, formación en IA generativa, Pinecone y contribuciones de privacidad a DELIA." />
 
-Desarrollo aplicaciones web y proyectos de análisis de datos. Me interesa conectar la interfaz, el backend y los datos para construir herramientas que ayuden a gestionar procesos y tomar decisiones. Estudio Ingeniería en Informática con mención en Ciencia de Datos en Duoc UC. Busco oportunidades junior, colaboraciones freelance y proyectos remotos en software y datos.
+<img src="dashboard/proyectos.svg" width="100%" alt="Proyectos destacados. Spotify Tracks, Ryde, Clínica dental y facial, Trazabilidad de fruta, StreamView Analytics, Viemms Store, Vexum y Security Auditor & Licensing." />
 
-<img src="dashboard/stack.svg" width="100%" alt="Stack de desarrollo por área. La lista de tecnologías está disponible debajo." />
+<img src="dashboard/metricas.svg" width="100%" alt="Spotify Tracks analizó 89.495 canciones. Obtuvo R² de 0,830, MAE de 5,02 y RMSE de 8,50 sobre 17.913 canciones de reserva. StreamView Analytics permite explorar 31.991 títulos." />
+
+<img id="actividad" src="dashboard/actividad.svg" width="100%" alt="Actividad en GitHub. Total anual de contribuciones públicas y privadas, repositorios, seguidores, estrellas, días activos y calendario anonimizado." />
+
+<img src="dashboard/formacion.svg" width="100%" alt="Formación y certificaciones. Ingeniería en Informática, mención Ciencia de Datos, sexto semestre en Duoc UC. Usando la IA Generativa, Duoc UC, 36 horas, 2026. CEHPC, CSFPC y CAPC, CertiProf, 2026. Microsoft Certified Azure Fundamentals AZ-900, 2026. Formación complementaria en NoSQL y modelado de documentos con MongoDB." />
+
+<a href="https://www.linkedin.com/in/benjamin-diaz-donoso/"><img src="dashboard/contacto.svg" width="100%" alt="Contacto de Benjamín Díaz Donoso en LinkedIn" /></a>
 
 <details>
-<summary>Ver tecnologías y herramientas</summary>
+<summary><img src="dashboard/enlaces.svg" width="95%" alt="Detalles y enlaces del portafolio" /></summary>
+
+### Tecnologías y herramientas
 
 | Área | Tecnologías y conocimientos |
 | --- | --- |
@@ -26,20 +34,13 @@ Desarrollo aplicaciones web y proyectos de análisis de datos. Me interesa conec
 | Seguridad y blockchain | Ciberseguridad, auditoría, protección de datos personales, expresiones regulares, Solidity, Remix IDE, contratos inteligentes y DApps |
 | Metodologías | Scrum y CRISP-DM |
 
-</details>
-
-<img src="dashboard/arquitectura.svg" width="100%" alt="Arquitectura de sistemas. Flujo de cliente, API, servicios y datos, con infraestructura, autenticación y validación." />
-
-<img src="dashboard/ia.svg" width="100%" alt="IA, datos y seguridad. Machine Learning, Vexum, formación en IA generativa, Pinecone y contribuciones de privacidad a DELIA." />
+### Ingeniería de IA
 
 - **Machine Learning.** Preparación de datos, regresión, segmentación y evaluación de modelos en [Spotify Tracks](https://github.com/benjadiaz112/spotify-tracks-eda).
 - **IA generativa y automatización.** Desarrollo Vexum, una iniciativa de software, automatización e IA. Mi formación incluye IA generativa y mi stack de datos incluye Pinecone como base vectorial.
 - **Seguridad en aplicaciones de IA.** En [DELIA](https://github.com/andres-olguin/DELIA) contribuí al enmascaramiento de identificadores de México y Bolivia, con validaciones y pruebas. También trabajé en benchmarks y reproducibilidad. [Cambio integrado](https://github.com/andres-olguin/DELIA/pull/20) · [Propuesta de CI](https://github.com/andres-olguin/DELIA/pull/67)
 
-<img src="dashboard/proyectos.svg" width="100%" alt="Proyectos destacados. Spotify Tracks, Ryde, Clínica dental y facial, Trazabilidad de fruta, StreamView Analytics, Viemms Store, Vexum y Security Auditor & Licensing." />
-
-<details>
-<summary>Ver proyectos, detalles y repositorios</summary>
+### Proyectos y repositorios
 
 | Proyecto | Qué hace |
 | --- | --- |
@@ -53,26 +54,8 @@ Desarrollo aplicaciones web y proyectos de análisis de datos. Me interesa conec
 | **Security Auditor & Licensing System** | Auditoría de seguridad y gestión de licencias orientada al cumplimiento en equipos finales. |
 | [AegisBot](https://github.com/andres-olguin/AegisBot/pull/21) | Contribución para validar confirmaciones y detener sesiones ante fallos, con pruebas de regresión. |
 
-</details>
-
-<img src="dashboard/metricas.svg" width="100%" alt="Spotify Tracks analizó 89.495 canciones. Obtuvo R² de 0,830, MAE de 5,02 y RMSE de 8,50 sobre 17.913 canciones de reserva. StreamView Analytics permite explorar 31.991 títulos." />
-
 [Resultados de Spotify Tracks](https://github.com/benjadiaz112/spotify-tracks-eda/tree/feat/spotify-ep3) · [StreamView Analytics](https://github.com/fluzxks/StreamView_project_exp2)
 
-<img id="actividad" src="dashboard/actividad.svg" width="100%" alt="Actividad en GitHub. Total anual de contribuciones públicas y privadas, repositorios, seguidores, estrellas, días activos y calendario anonimizado." />
+[Todos los repositorios](https://github.com/benjadiaz112?tab=repositories) · [Calendario de GitHub](https://github.com/benjadiaz112#contribution-activity) · [Actualización automática del dashboard](https://github.com/benjadiaz112/benjadiaz112/actions/workflows/profile-dashboard.yml)
 
-[Calendario de GitHub](https://github.com/benjadiaz112#contribution-activity) · [Actualización automática del dashboard](https://github.com/benjadiaz112/benjadiaz112/actions/workflows/profile-dashboard.yml)
-
-## Formación y certificaciones
-
-**Ingeniería en Informática, mención Ciencia de Datos — Duoc UC**  
-En curso · Sexto semestre
-
-- Usando la IA Generativa — Duoc UC, 36 horas, 2026.
-- Ethical Hacking Professional Certification (CEHPC) — CertiProf, 2026.
-- Cyber Security Foundation Professional Certificate (CSFPC) — CertiProf, 2026.
-- Cybersecurity Awareness Professional Certification (CAPC) — CertiProf, 2026.
-- Microsoft Certified Azure Fundamentals (AZ-900) — Microsoft, 2026.
-- Formación complementaria en NoSQL y modelado de documentos con MongoDB.
-
-Para oportunidades de desarrollo, datos o colaboración por proyecto, escríbeme por [LinkedIn](https://www.linkedin.com/in/benjamin-diaz-donoso/).
+</details>

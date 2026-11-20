@@ -105,7 +105,19 @@ orbital = '''
 hero = orbital + eyebrow(43,62,"PORTAFOLIO DE DESARROLLO") + text(39,149,"Benjamín Díaz",70,"#fff6ff",775) + text(39,225,"Donoso",70,"#ead4ff",775)
 hero += text(45,278,"Full Stack · Ciencia de Datos",28,"#fff2ff",650) + text(45,313,"Machine Learning · Ciberseguridad",26,"#e4d5f6",520)
 hero += '<path d="M45 348H955" stroke="#c9a4fd" opacity=".34"/>' + text(45,389,"@benjadiaz112",21,"#f0d9ff",650) + text(955,389,"CHILE",15,"#dfc5f3",700,'text-anchor="end" letter-spacing="2"')
-svg("portada","Benjamín Díaz Donoso","Full Stack, Ciencia de Datos, Machine Learning y Ciberseguridad. Chile.",424,hero,True)
+hero += panel(43,429,914,267)
+hero += eyebrow(66,466,"SOBRE MÍ")
+hero += text(66,507,"Desarrollo aplicaciones web y proyectos de análisis de datos.",28,"#fff4ff",700)
+hero += text(66,543,"Conecto la interfaz, el backend y los datos para construir herramientas",24)
+hero += text(66,574,"que ayuden a gestionar procesos y tomar decisiones.",24)
+hero += '<path d="M66 597H932" stroke="url(#edge)"/>'
+hero += text(66,627,"Duoc UC · Ingeniería en Informática, mención Ciencia de Datos",22,"#e9caff",640)
+hero += text(66,659,"Busco oportunidades junior, colaboraciones freelance y proyectos remotos.",22)
+svg("portada","Benjamín Díaz Donoso",
+    "Desarrollo Full Stack, Ciencia de Datos, Machine Learning y Ciberseguridad en Chile. "
+    "Desarrollo aplicaciones web y proyectos de análisis de datos. Conecto la interfaz, el backend y los datos para construir herramientas que ayuden a gestionar procesos y tomar decisiones. "
+    "Estudio Ingeniería en Informática, mención Ciencia de Datos, en Duoc UC. Busco oportunidades junior, colaboraciones freelance y proyectos remotos.",
+    731,hero,True)
 
 icons = {
     "screen":"M3 5h34v23H3z M14 34h12 M20 28v6 M9 11h22 M9 17h11",
@@ -387,3 +399,44 @@ for i,(title,sub,glyph) in enumerate([
 svg("metricas","Rendimiento y visualización",
     "Spotify Tracks: 89.495 canciones, R² de 0,830 sobre 17.913 canciones de reserva, MAE de 5,02 y RMSE de 8,50. StreamView Analytics: catálogo de 31.991 títulos.",
     812,metrics)
+
+
+certificates = [
+    ("IA generativa", "Usando la IA Generativa", "", "Duoc UC · 36 horas · 2026"),
+    ("CEHPC", "Ethical Hacking Professional", "Certification", "CertiProf · 2026"),
+    ("CSFPC", "Cyber Security Foundation", "Professional Certificate", "CertiProf · 2026"),
+    ("CAPC", "Cybersecurity Awareness", "Professional Certification", "CertiProf · 2026"),
+    ("AZ-900", "Microsoft Certified", "Azure Fundamentals", "Microsoft · 2026"),
+    ("MongoDB", "Bases de datos NoSQL", "y modelado de documentos", "Formación complementaria"),
+]
+formation = section("ESTUDIOS","Formación y certificaciones","Ciencia de Datos, IA, ciberseguridad y cloud.")
+formation += panel(43,185,914,133)
+formation += icon(868,222,"chart",1.2)
+formation += text(67,227,"Ingeniería en Informática",30,"#fff4ff",750)
+formation += text(67,262,"Mención Ciencia de Datos · Duoc UC",24,"#f1d7ff",620)
+formation += text(67,291,"En curso · Sexto semestre",20)
+for i,(heading, first_line, second_line, provider) in enumerate(certificates):
+    x,y=43+(i%2)*466,336+(i//2)*167
+    formation += panel(x,y,448,152,20)
+    formation += text(x+22,y+38,heading,26,"#fff3ff",740)
+    formation += text(x+22,y+70,first_line,21)
+    formation += text(x+22,y+96,second_line,21)
+    formation += text(x+22,y+129,provider,18,"#ead2ff",620)
+certificate_description = " ".join(
+    f"{first_line} {second_line}. {provider}." if second_line else f"{first_line}. {provider}."
+    for _,first_line,second_line,provider in certificates
+)
+svg("formacion","Formación y certificaciones",
+    "Ingeniería en Informática, mención Ciencia de Datos en Duoc UC. En curso, sexto semestre. "
+    + certificate_description,
+    851,formation)
+
+contact = icon(46,29,"screen",1.2)
+contact += text(110,49,"Contacto en LinkedIn",30,"#fff4ff",730)
+contact += text(110,79,"Desarrollo, datos y colaboración por proyecto",23,"#ead2ff",540)
+contact += '<path d="M910 56h43m-12-12 12 12-12 12" fill="none" stroke="#f0caff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'
+svg("contacto","Contacto en LinkedIn","LinkedIn de Benjamín Díaz Donoso para oportunidades y colaboración.",106,contact)
+
+details_card = text(45,60,"Detalles y enlaces del portafolio",31,"#fff4ff",710)
+details_card += '<path d="M903 40l16 16 16-16" stroke="#f0caff" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>'
+svg("enlaces","Detalles y enlaces del portafolio","Abrir tecnologías, proyectos y enlaces del portafolio.",95,details_card)
