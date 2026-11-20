@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" role="img" aria-labelledby="title desc" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+<title id="title">Proyectos destacados</title><desc id="desc">Spotify Tracks, Ryde, Clínica dental y facial, Trazabilidad de fruta, StreamView Analytics, Viemms Store, Vexum y Security Auditor &amp; Licensing.</desc>
+<defs>
+  <linearGradient id="background" x2="1" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#140b26"/><stop offset=".52" stop-color="#24143d"/><stop offset="1" stop-color="#10091d"/></linearGradient>
+  <radialGradient id="aura"><stop stop-color="#a758ed" stop-opacity=".38"/><stop offset="1" stop-color="#a758ed" stop-opacity="0"/></radialGradient>
+  <linearGradient id="glass" x2=".3" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#eacaff" stop-opacity=".18"/><stop offset=".37" stop-color="#9975ca" stop-opacity=".095"/><stop offset="1" stop-color="#130b26" stop-opacity=".56"/></linearGradient>
+  <linearGradient id="edge" x2=".85" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#efd9ff" stop-opacity=".65"/><stop offset=".45" stop-color="#c3a0fc" stop-opacity=".24"/><stop offset="1" stop-color="#ad72ed" stop-opacity=".34"/></linearGradient>
+  <linearGradient id="shine"><stop stop-color="#e5ceff" stop-opacity="0"/><stop offset=".32" stop-color="#f8e7ff" stop-opacity=".8"/><stop offset="1" stop-color="#e5ceff" stop-opacity="0"/></linearGradient>
+  <linearGradient id="accent"><stop stop-color="#f0bfff"/><stop offset="1" stop-color="#a088ff"/></linearGradient>
+  <linearGradient id="metal" x2=".35" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#ffedff"/><stop offset=".22" stop-color="#d7a0ff"/><stop offset=".47" stop-color="#6242af" stop-opacity=".12"/><stop offset=".72" stop-color="#9c61f6" stop-opacity=".46"/><stop offset="1" stop-color="#f9d7ff"/></linearGradient>
+  <radialGradient id="orb" cx=".37" cy=".26" r=".71"><stop stop-color="#eedaff" stop-opacity=".71"/><stop offset=".35" stop-color="#a758ed" stop-opacity=".34"/><stop offset=".69" stop-color="#38236e" stop-opacity=".11"/><stop offset="1" stop-color="#e4b3ff" stop-opacity=".5"/></radialGradient>
+  <pattern id="dots" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1" fill="#e0c8ff" opacity=".14"/></pattern>
+  <clipPath id="frame"><rect width="1000" height="640" rx="31"/></clipPath>
+</defs>
+<style>
+  .counter-static {display:none}
+  .counter-roll { animation: count-up 8s infinite; }
+  .graph-reveal { animation: reveal 8s cubic-bezier(.25,.6,.35,1) infinite; }
+  .graph-scan { animation: scan 8s ease-in-out infinite; }
+  .cell-beat { animation: cell-beat 5.5s ease-in-out infinite; }
+  .metric-fill { transform-origin:0 0; animation: fill-meter 8s cubic-bezier(.25,.6,.35,1) infinite; }
+  @keyframes count-up {
+    0% { transform:translateY(0); animation-timing-function:steps(var(--frames),end); }
+    35%,100% { transform:translateY(var(--end)); }
+  }
+  @keyframes reveal {0% {transform:scaleX(.001)} 42%,100% {transform:scaleX(1)}}
+  @keyframes scan {0% {transform:translateX(-161px);opacity:0} 8% {opacity:1} 86%,100% {transform:translateX(902px);opacity:0}}
+  @keyframes cell-beat {0%,46%,100% {opacity:.58} 20% {opacity:1}}
+  @keyframes fill-meter {0% {transform:scaleX(.01)} 39%,100% {transform:scaleX(1)}}
+  @media (prefers-reduced-motion: reduce) {
+    .counter-roll,.graph-reveal,.graph-scan,.cell-beat,.metric-fill {animation:none}
+    .counter-motion,.graph-scan {display:none}
+    .counter-static {display:inline}
+  }
+</style>
+<g clip-path="url(#frame)">
+<rect width="1000" height="640" fill="url(#background)"/>
+<ellipse cx="880" cy="15" rx="480" ry="255" fill="url(#aura)"/>
+<ellipse cx="230" cy="640" rx="470" ry="169" fill="url(#aura)" opacity=".56"/>
+<rect width="1000" height="640" fill="url(#dots)"/>
+<rect x="1" y="1" width="998" height="638" rx="30" fill="none" stroke="url(#edge)"/>
+<text x="43" y="55" font-size="15" font-weight="700" fill="#d6baff" letter-spacing="2.2">PORTAFOLIO</text><text x="43" y="108" font-size="48" font-weight="750" fill="#fff6ff" >Proyectos destacados</text><text x="45" y="149" font-size="22" font-weight="400" fill="#e6ddf8" >Aplicaciones web, análisis de datos, Android y seguridad.</text><rect x="43" y="181" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M64 182h406" stroke="url(#shine)"/><text x="62" y="215" font-size="23" font-weight="710" fill="#fff4ff" >Spotify Tracks</text><text x="62" y="241" font-size="17.5" font-weight="400" fill="#e6ddf8" >Modelado de popularidad musical</text><text x="62" y="264" font-size="16" font-weight="630" fill="#e2bcff" >Python · scikit-learn</text><rect x="509" y="181" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M530 182h406" stroke="url(#shine)"/><text x="528" y="215" font-size="23" font-weight="710" fill="#fff4ff" >Ryde</text><text x="528" y="241" font-size="17.5" font-weight="400" fill="#e6ddf8" >Plataforma web y administración</text><text x="528" y="264" font-size="16" font-weight="630" fill="#e2bcff" >TypeScript · Node.js · PostgreSQL</text><rect x="43" y="293" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M64 294h406" stroke="url(#shine)"/><text x="62" y="327" font-size="23" font-weight="710" fill="#fff4ff" >Clínica dental y facial</text><text x="62" y="353" font-size="17.5" font-weight="400" fill="#e6ddf8" >Catálogo y reserva de demostración</text><text x="62" y="376" font-size="16" font-weight="630" fill="#e2bcff" >React · Next.js</text><rect x="509" y="293" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M530 294h406" stroke="url(#shine)"/><text x="528" y="327" font-size="23" font-weight="710" fill="#fff4ff" >Trazabilidad de fruta</text><text x="528" y="353" font-size="17.5" font-weight="400" fill="#e6ddf8" >DApp para estado y cadena de frío</text><text x="528" y="376" font-size="16" font-weight="630" fill="#e2bcff" >Solidity · Remix IDE</text><rect x="43" y="405" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M64 406h406" stroke="url(#shine)"/><text x="62" y="439" font-size="23" font-weight="710" fill="#fff4ff" >StreamView Analytics</text><text x="62" y="465" font-size="17.5" font-weight="400" fill="#e6ddf8" >Exploración y visualización de contenidos</text><text x="62" y="488" font-size="16" font-weight="630" fill="#e2bcff" >Streamlit · D3.js · Power BI</text><rect x="509" y="405" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M530 406h406" stroke="url(#shine)"/><text x="528" y="439" font-size="23" font-weight="710" fill="#fff4ff" >Viemms Store</text><text x="528" y="465" font-size="17.5" font-weight="400" fill="#e6ddf8" >Catálogo y administración en Android</text><text x="528" y="488" font-size="16" font-weight="630" fill="#e2bcff" >Kotlin · Firebase</text><rect x="43" y="517" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M64 518h406" stroke="url(#shine)"/><text x="62" y="551" font-size="23" font-weight="710" fill="#fff4ff" >Vexum</text><text x="62" y="577" font-size="17.5" font-weight="400" fill="#e6ddf8" >Servicios de software, automatización e IA</text><text x="62" y="600" font-size="16" font-weight="630" fill="#e2bcff" >React · TypeScript · Tailwind CSS</text><rect x="509" y="517" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M530 518h406" stroke="url(#shine)"/><text x="528" y="551" font-size="23" font-weight="710" fill="#fff4ff" >Security Auditor &amp; Licensing</text><text x="528" y="577" font-size="17.5" font-weight="400" fill="#e6ddf8" >Auditoría de seguridad y licencias</text><text x="528" y="600" font-size="16" font-weight="630" fill="#e2bcff" >Python · Backend</text>
+</g></svg>
