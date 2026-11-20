@@ -28,12 +28,21 @@ def scan_sweep(x, y, width, height, radius=20, phase=0, period=6.4):
     return f'''<g transform="translate({x} {y})" aria-hidden="true">
   <clipPath id="{clip}"><rect width="{width}" height="{height}" rx="{radius}"/></clipPath>
   <g clip-path="url(#{clip})">
-    <g class="scan-beam" style="--travel:{width}px;--phase:{phase}s;--period:{period}s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;{width} 0;{width} 0" keyTimes="0;.78;1"
+        begin="{phase:.2f}s" dur="{period}s" repeatCount="indefinite"/>
       <rect width="112" height="{height}" fill="url(#scanner-glow)"/>
       <path d="M110 0v{height}" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
   </g>
 </g>'''
+
+def flow_line(path, color, width):
+    return f'''<path class="motion-decoration" d="{path}" fill="none" stroke="{color}"
+  stroke-width="{width}" stroke-dasharray="8 11">
+  <animate attributeName="stroke-dashoffset" from="0" to="-38" dur="2.8s" repeatCount="indefinite"/>
+</path>'''
 
 def section(kicker, heading, subtitle):
     centered = 'text-anchor="middle"'
@@ -68,35 +77,10 @@ def svg(name, title, description, h, body, hero=False):
 </defs>
 <style>
   .counter-static {{display:none}}
-  .counter-roll {{ animation: count-up 8s infinite; }}
-  .graph-reveal {{ animation: reveal 8s cubic-bezier(.25,.6,.35,1) infinite; }}
-  .graph-scan {{ animation: scan 8s ease-in-out infinite; }}
-  .scan-beam {{ opacity:0; animation: sweep-across var(--period) linear var(--phase) infinite; }}
-  .orbit-signal {{ transform-origin:0 0; animation: orbit-signal 9s linear infinite; }}
-  .cell-beat {{ animation: cell-beat 5.5s ease-in-out infinite; }}
-  .signal-flow {{stroke-dasharray:8 11;animation:signal-flow 2.8s linear infinite}}
-  .gauge-fill {{animation:gauge 8s ease-out infinite}}
-  @keyframes signal-flow {{to {{stroke-dashoffset:-38}}}}
-  @keyframes gauge {{0% {{stroke-dashoffset:100}} 45%,100% {{stroke-dashoffset:var(--target)}}}}
-  .metric-fill {{ transform-origin:0 0; animation: fill-meter 8s cubic-bezier(.25,.6,.35,1) infinite; }}
-  @keyframes count-up {{
-    0% {{ transform:translateY(0); }}
-    35%,100% {{ transform:translateY(var(--end)); }}
-  }}
-  @keyframes reveal {{0% {{transform:scaleX(.001)}} 42%,100% {{transform:scaleX(1)}}}}
-  @keyframes scan {{0% {{transform:translateX(-161px);opacity:0}} 8% {{opacity:1}} 86%,100% {{transform:translateX(902px);opacity:0}}}}
-  @keyframes sweep-across {{
-    0% {{transform:translateX(-114px);opacity:0}}
-    9%,65% {{opacity:1}}
-    75%,100% {{transform:translateX(var(--travel));opacity:0}}
-  }}
-  @keyframes orbit-signal {{ to {{transform:rotate(360deg)}} }}
-  @keyframes cell-beat {{0%,46%,100% {{opacity:.58}} 20% {{opacity:1}}}}
-  @keyframes fill-meter {{0% {{transform:scaleX(.01)}} 39%,100% {{transform:scaleX(1)}}}}
   @media (prefers-reduced-motion: reduce) {{
-    .counter-roll,.graph-reveal,.graph-scan,.scan-beam,.orbit-signal,.cell-beat,.metric-fill,.signal-flow,.gauge-fill {{animation:none}}
-    .counter-motion,.graph-scan,.scan-beam,.orbit-signal {{display:none}}
+    .counter-motion,.motion-decoration {{display:none}}
     .counter-static {{display:inline}}
+    .chart-reveal {{clip-path:none}}
   }}
 </style>
 <g clip-path="url(#frame)">
@@ -114,7 +98,8 @@ orbital = '''
 <g transform="translate(785 191)">
   <circle r="185" fill="url(#aura)"/>
   <circle r="147" fill="none" stroke="#cdaaee" stroke-opacity=".25" stroke-dasharray="2 8"/>
-  <g class="orbit-signal" aria-hidden="true">
+  <g class="motion-decoration" aria-hidden="true">
+    <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="9s" repeatCount="indefinite"/>
     <path d="M-105 -102 A147 147 0 0 1 0 -147" fill="none" stroke="#d8a2ff" stroke-opacity=".6" stroke-width="2"/>
     <circle cy="-147" r="7" fill="#da96ff" opacity=".25"/>
     <circle cy="-147" r="3.3" fill="#fff0ff"/>
@@ -192,7 +177,7 @@ def card(x,y,w,h,title,descriptor,glyph,tools,lines):
     for i,line in enumerate(lines):
         block += text(x+21,y+151+24*i,line,18.5)
     block += f'<path d="M{x+21} {y+h-18}h{w-42}" stroke="#a776d3" stroke-opacity=".28"/>'
-    block += f'<circle class="cell-beat" cx="{x+w-24}" cy="{y+h-18}" r="3.6" fill="#f9cfff"/>'
+    block += f'<circle cx="{x+w-24}" cy="{y+h-18}" r="3.6" fill="#f9cfff"/>'
     return block
 
 
@@ -217,14 +202,15 @@ flow = [
     ("Servicios","Node · Spring Boot · FastAPI","nodes"),
     ("Datos","PostgreSQL · Firestore","database"),
 ]
-architecture += '<path d="M142 264H850" stroke="#8558b0" stroke-width="5" opacity=".39"/><path class="signal-flow" d="M142 264H850" stroke="#f4b9ff" stroke-width="2.5"/>'
+architecture += '<path d="M142 264H850" stroke="#8558b0" stroke-width="5" opacity=".39"/>'
+architecture += flow_line("M142 264H850","#f4b9ff",2.5)
 for i,(label,sub,glyph) in enumerate(flow):
     x=43+i*233
     architecture += panel(x,188,212,153,20)
     architecture += icon(x+87,207,glyph)
     architecture += text(x+106,277,label,27,"#fff3ff",740,'text-anchor="middle"')
     architecture += text(x+106,306,sub,14,"#f0d8fc",560,'text-anchor="middle"')
-architecture += '<path class="signal-flow" d="M500 341v30" stroke="#edb9ff" stroke-width="2"/>'
+architecture += flow_line("M500 341v30","#edb9ff",2)
 architecture += card(43,373,448,212,"Entrega y despliegue","Automatización y contenedores","cloud",("GitHub Actions","Docker","Azure"),("Revisión de cambios · Pruebas de CI","Versionado y colaboración con Git"))
 architecture += card(509,373,448,212,"Control y persistencia","Protección de datos y autenticación","shield",("Firebase Auth","SQL","Firestore"),("Validación de entradas · Perfiles de acceso","Almacenamiento según el caso de uso"))
 svg("arquitectura","Arquitectura de sistemas","Diagrama de cliente, APIs REST, servicios y datos. Incluye tecnologías de entrega, infraestructura, autenticación y persistencia.",614,architecture)
@@ -236,9 +222,10 @@ ai_cards = [
     ("Seguridad en IA","Gobernanza y privacidad","shield",("DELIA","Python"),("Enmascaramiento de datos","Pruebas y benchmarks")),
 ]
 ai = section("INTELIGENCIA ARTIFICIAL","Ingeniería de IA","Modelado, automatización y protección de datos.")
-ai += '<path d="M180 213H820M180 213v26m320-26v26m320-26v26" fill="none" stroke="#9d62c8" stroke-width="2"/><path class="signal-flow" d="M180 213H820" stroke="#edb9ff" stroke-width="2.5"/>'
-for i,x in enumerate((180,500,820)):
-    ai += f'<circle class="cell-beat" cx="{x}" cy="213" r="5" fill="#ffceff" style="animation-delay:{i*0.6}s"/>'
+ai += '<path d="M180 213H820M180 213v26m320-26v26m320-26v26" fill="none" stroke="#9d62c8" stroke-width="2"/>'
+ai += flow_line("M180 213H820","#edb9ff",2.5)
+for x in (180,500,820):
+    ai += f'<circle cx="{x}" cy="213" r="5" fill="#ffceff"/>'
 for i,items in enumerate(ai_cards):
     ai += card(43+i*310,242,294,211,*items)
 svg("ia","Ingeniería de IA","Machine learning, Vexum e IA generativa, bases de datos vectoriales con Pinecone y contribuciones de privacidad en DELIA.",484,ai)
@@ -268,7 +255,9 @@ def format_metric(value, decimals=0):
 
 
 def counter(x, y, value, decimals=0):
-    frames = min(24, max(1, round(value * 10**decimals)))
+    if value == 0:
+        return text(x,y+63,format_metric(value,decimals),61,"#fff4ff",790)
+    frames = min(36, max(1, round(value * 10**decimals)))
     stride = 78
     number = lambda amount, baseline: text(
         0, baseline, format_metric(amount, decimals), 61, "#fff4ff", 790,
@@ -278,11 +267,15 @@ def counter(x, y, value, decimals=0):
         number(value * (1 - (1 - i / frames)**1.8), 63 + i * stride)
         for i in range(frames)
     ) + number(value, 63 + frames * stride)
+    stops = ";".join(f"0 {-i*stride}" for i in range(frames+1))
+    times = ";".join(f"{.21*i/frames:.6f}" for i in range(frames+1))
     return (
         f'<g transform="translate({x} {y})">'
         '<g class="counter-motion" clip-path="url(#counter-window)">'
-        f'<g class="counter-roll" transform="translate(0 {-frames*stride})" '
-        f'style="animation-timing-function:steps({frames},end);--end:{-frames*stride}px">{sequence}</g>'
+        f'<g transform="translate(0 {-frames*stride})">'
+        f'<animateTransform attributeName="transform" type="translate" '
+        f'values="{stops};0 {-frames*stride}" keyTimes="{times};1" '
+        f'calcMode="discrete" dur="8s" repeatCount="indefinite"/>{sequence}</g>'
         '</g>'
         f'<g class="counter-static">{number(value, 63)}</g></g>'
     )
@@ -328,7 +321,6 @@ for i,(value,label,note) in enumerate([
 activity += '<g transform="translate(0 165)">'
 activity += '''<defs>
  <linearGradient id="area" x2="0" y2="1"><stop stop-color="#d291ff" stop-opacity=".48"/><stop offset="1" stop-color="#b76dff" stop-opacity=".025"/></linearGradient>
- <linearGradient id="scan-light"><stop stop-color="#c691ff" stop-opacity="0"/><stop offset=".59" stop-color="#b373ff" stop-opacity=".06"/><stop offset="1" stop-color="#e9baff" stop-opacity=".38"/></linearGradient>
  <clipPath id="calendar-window"><rect width="863" height="123" rx="9"/></clipPath>
 </defs>'''
 activity += panel(43,351,914,289)
@@ -345,18 +337,25 @@ for tick in range(0,max_tick+1,tick_step):
 points = [(cw*i/15, ch*(1-val/max_tick)) for i,val in enumerate(chart_counts)]
 path = "M" + " L".join(f"{x:.2f} {y:.2f}" for x,y in points)
 activity += f'''<g transform="translate({cx} {cy})">
- <clipPath id="chart-window"><rect class="graph-reveal" width="{cw+6}" height="{ch+9}" x="-5" y="-4"/></clipPath>
+ <clipPath id="chart-window">
+  <rect width="{cw+6}" height="{ch+9}" x="-5" y="-4">
+   <animate attributeName="width" values="6;{cw+6};{cw+6}" keyTimes="0;.31;1" dur="8s" repeatCount="indefinite"/>
+  </rect>
+ </clipPath>
  <path d="{path}" fill="none" stroke="#ad7ae8" stroke-opacity=".28" stroke-width="2"/>
- <g clip-path="url(#chart-window)">
+ <g class="chart-reveal" clip-path="url(#chart-window)">
   <path d="{path} V{ch} H0 Z" fill="url(#area)"/>
   <path d="{path}" fill="none" stroke="#b877ff" stroke-width="13" opacity=".17" stroke-linejoin="round"/>
   <path d="{path}" fill="none" stroke="#e7bbff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
  </g>
+ <circle class="motion-decoration" r="5" fill="#fff0ff">
+  <animateMotion path="{path}" dur="8s" repeatCount="indefinite"/>
+ </circle>
 </g>'''
 activity += scan_sweep(cx,cy,cw,ch,4,phase=-1.8,period=7.9)
 for i,(x,y) in enumerate(points):
     if chart_counts[i] >= 10:
-        activity += f'<circle class="cell-beat" cx="{cx+x:.2f}" cy="{cy+y:.2f}" r="4.5" fill="#fff0ff" style="animation-delay:{i*.24:.2f}s"/>'
+        activity += f'<circle cx="{cx+x:.2f}" cy="{cy+y:.2f}" r="3.2" fill="#f0d7ff" opacity=".8"/>'
 chart_start = activity_start + timedelta(weeks=len(weeks)-16)
 for i in range(0,16,4):
     stamp = chart_start + timedelta(weeks=i)
@@ -372,13 +371,9 @@ levels=["#2e1e46","#603997","#9255dc","#c580ff","#f8d6ff"]
 for i,n in enumerate(counts):
     col,row=divmod(i,7)
     level=sum(n>=threshold for threshold in (1,4,10,18))
-    animation=f' class="cell-beat" style="animation-delay:{col*.11:.2f}s"' if n else ""
-    activity += f'<rect{animation} x="{col*16.08:.2f}" y="{row*15.58:.2f}" width="12.5" height="12.5" rx="3.1" fill="{levels[level]}"/>'
-activity += '''<g class="graph-scan">
- <rect width="157" height="107" fill="url(#scan-light)"/>
- <path d="M157 0v107" stroke="#eed0ff" stroke-width="1.5" opacity=".8"/>
-</g></g>'''
-activity += "</g>"
+    activity += f'<rect x="{col*16.08:.2f}" y="{row*15.58:.2f}" width="12.5" height="12.5" rx="3.1" fill="{levels[level]}"/>'
+activity += scan_sweep(0,0,863,107,4,phase=-1.2,period=8.4)
+activity += "</g></g>"
 activity += text(45,1098,"Enfoque actual",37,"#fff1ff",750)
 for i,(title,lines) in enumerate([
     ("IA aplicada",("ML y evaluación","Automatización · Vexum")),
@@ -411,7 +406,7 @@ for i,(label,value) in enumerate([("MAE",5.02),("RMSE",8.50)]):
     y=475+i*55
     metrics += text(65,y,label,18,"#f7e3ff",680)
     metrics += text(466,y,format_metric(value,2),20,"#fff4ff",720,'text-anchor="end"')
-    metrics += f'<g transform="translate(67 {y+14})"><path d="M0 0h390" stroke="#6d4989" stroke-width="8" stroke-linecap="round"/><path class="metric-fill" d="M0 0h{value*39:.2f}" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/></g>'
+    metrics += f'<g transform="translate(67 {y+14})"><path d="M0 0h390" stroke="#6d4989" stroke-width="8" stroke-linecap="round"/><path d="M0 0h{value*39:.2f}" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/></g>'
 metrics += panel(509,361,448,233,22)
 metrics += scan_sweep(509,361,448,233,22,phase=-3.3,period=8.6)
 metrics += text(531,403,"Ajuste del modelo",25,"#fff2ff",730)
@@ -421,11 +416,12 @@ metrics += text(531,546,"Evaluación en reserva",17)
 metrics += """
 <g transform="rotate(-90 862 484)">
   <circle cx="862" cy="484" r="65" fill="none" stroke="#563473" stroke-width="10"/>
-  <circle class="gauge-fill" cx="862" cy="484" r="65" fill="none" stroke="url(#accent)" stroke-width="10"
-          stroke-linecap="round" pathLength="100" stroke-dasharray="100 100" stroke-dashoffset="17" style="--target:17"/>
+  <circle cx="862" cy="484" r="65" fill="none" stroke="url(#accent)" stroke-width="10"
+          stroke-linecap="round" pathLength="100" stroke-dasharray="100 100" stroke-dashoffset="17"/>
 </g>
 <g transform="translate(862 484)" aria-hidden="true">
-  <g class="orbit-signal" style="animation-duration:6.5s">
+  <g class="motion-decoration">
+    <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="6.5s" repeatCount="indefinite"/>
     <path d="M-41 -61A74 74 0 0 1 0 -74" fill="none" stroke="#d7a2fa" stroke-opacity=".7" stroke-width="2"/>
     <circle cy="-74" r="3.5" fill="#fff0ff"/>
   </g>

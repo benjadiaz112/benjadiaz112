@@ -21,35 +21,10 @@
 </defs>
 <style>
   .counter-static {display:none}
-  .counter-roll { animation: count-up 8s infinite; }
-  .graph-reveal { animation: reveal 8s cubic-bezier(.25,.6,.35,1) infinite; }
-  .graph-scan { animation: scan 8s ease-in-out infinite; }
-  .scan-beam { opacity:0; animation: sweep-across var(--period) linear var(--phase) infinite; }
-  .orbit-signal { transform-origin:0 0; animation: orbit-signal 9s linear infinite; }
-  .cell-beat { animation: cell-beat 5.5s ease-in-out infinite; }
-  .signal-flow {stroke-dasharray:8 11;animation:signal-flow 2.8s linear infinite}
-  .gauge-fill {animation:gauge 8s ease-out infinite}
-  @keyframes signal-flow {to {stroke-dashoffset:-38}}
-  @keyframes gauge {0% {stroke-dashoffset:100} 45%,100% {stroke-dashoffset:var(--target)}}
-  .metric-fill { transform-origin:0 0; animation: fill-meter 8s cubic-bezier(.25,.6,.35,1) infinite; }
-  @keyframes count-up {
-    0% { transform:translateY(0); }
-    35%,100% { transform:translateY(var(--end)); }
-  }
-  @keyframes reveal {0% {transform:scaleX(.001)} 42%,100% {transform:scaleX(1)}}
-  @keyframes scan {0% {transform:translateX(-161px);opacity:0} 8% {opacity:1} 86%,100% {transform:translateX(902px);opacity:0}}
-  @keyframes sweep-across {
-    0% {transform:translateX(-114px);opacity:0}
-    9%,65% {opacity:1}
-    75%,100% {transform:translateX(var(--travel));opacity:0}
-  }
-  @keyframes orbit-signal { to {transform:rotate(360deg)} }
-  @keyframes cell-beat {0%,46%,100% {opacity:.58} 20% {opacity:1}}
-  @keyframes fill-meter {0% {transform:scaleX(.01)} 39%,100% {transform:scaleX(1)}}
   @media (prefers-reduced-motion: reduce) {
-    .counter-roll,.graph-reveal,.graph-scan,.scan-beam,.orbit-signal,.cell-beat,.metric-fill,.signal-flow,.gauge-fill {animation:none}
-    .counter-motion,.graph-scan,.scan-beam,.orbit-signal {display:none}
+    .counter-motion,.motion-decoration {display:none}
     .counter-static {display:inline}
+    .chart-reveal {clip-path:none}
   }
 </style>
 <g clip-path="url(#frame)">
@@ -63,7 +38,8 @@
 <g transform="translate(785 191)">
   <circle r="185" fill="url(#aura)"/>
   <circle r="147" fill="none" stroke="#cdaaee" stroke-opacity=".25" stroke-dasharray="2 8"/>
-  <g class="orbit-signal" aria-hidden="true">
+  <g class="motion-decoration" aria-hidden="true">
+    <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="9s" repeatCount="indefinite"/>
     <path d="M-105 -102 A147 147 0 0 1 0 -147" fill="none" stroke="#d8a2ff" stroke-opacity=".6" stroke-width="2"/>
     <circle cy="-147" r="7" fill="#da96ff" opacity=".25"/>
     <circle cy="-147" r="3.3" fill="#fff0ff"/>
@@ -85,7 +61,10 @@
 <text x="43" y="62" font-size="15" font-weight="700" fill="#d6baff" letter-spacing="2.2">PORTAFOLIO DE DESARROLLO</text><text x="39" y="149" font-size="61.6" font-weight="775" fill="#fff6ff" >Benjamín Díaz</text><text x="39" y="225" font-size="61.6" font-weight="775" fill="#ead4ff" >Donoso</text><text x="45" y="278" font-size="24.6" font-weight="650" fill="#fff2ff" >Full Stack · Ciencia de Datos</text><text x="45" y="313" font-size="22.9" font-weight="520" fill="#e4d5f6" >Machine Learning · Ciberseguridad</text><path d="M45 348H955" stroke="#c9a4fd" opacity=".34"/><text x="45" y="389" font-size="18.5" font-weight="650" fill="#f0d9ff" >@benjadiaz112</text><text x="955" y="389" font-size="15" font-weight="700" fill="#dfc5f3" text-anchor="end" letter-spacing="2">CHILE</text><rect x="43" y="429" width="914" height="267" rx="25" fill="url(#glass)" stroke="url(#edge)"/><path d="M68 430h864" stroke="url(#shine)"/><g transform="translate(43 429)" aria-hidden="true">
   <clipPath id="sweep-43-429"><rect width="914" height="267" rx="25"/></clipPath>
   <g clip-path="url(#sweep-43-429)">
-    <g class="scan-beam" style="--travel:914px;--phase:-2s;--period:13s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;914 0;914 0" keyTimes="0;.78;1"
+        begin="-2.00s" dur="13s" repeatCount="indefinite"/>
       <rect width="112" height="267" fill="url(#scanner-glow)"/>
       <path d="M110 0v267" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>

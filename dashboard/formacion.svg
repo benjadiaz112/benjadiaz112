@@ -21,35 +21,10 @@
 </defs>
 <style>
   .counter-static {display:none}
-  .counter-roll { animation: count-up 8s infinite; }
-  .graph-reveal { animation: reveal 8s cubic-bezier(.25,.6,.35,1) infinite; }
-  .graph-scan { animation: scan 8s ease-in-out infinite; }
-  .scan-beam { opacity:0; animation: sweep-across var(--period) linear var(--phase) infinite; }
-  .orbit-signal { transform-origin:0 0; animation: orbit-signal 9s linear infinite; }
-  .cell-beat { animation: cell-beat 5.5s ease-in-out infinite; }
-  .signal-flow {stroke-dasharray:8 11;animation:signal-flow 2.8s linear infinite}
-  .gauge-fill {animation:gauge 8s ease-out infinite}
-  @keyframes signal-flow {to {stroke-dashoffset:-38}}
-  @keyframes gauge {0% {stroke-dashoffset:100} 45%,100% {stroke-dashoffset:var(--target)}}
-  .metric-fill { transform-origin:0 0; animation: fill-meter 8s cubic-bezier(.25,.6,.35,1) infinite; }
-  @keyframes count-up {
-    0% { transform:translateY(0); }
-    35%,100% { transform:translateY(var(--end)); }
-  }
-  @keyframes reveal {0% {transform:scaleX(.001)} 42%,100% {transform:scaleX(1)}}
-  @keyframes scan {0% {transform:translateX(-161px);opacity:0} 8% {opacity:1} 86%,100% {transform:translateX(902px);opacity:0}}
-  @keyframes sweep-across {
-    0% {transform:translateX(-114px);opacity:0}
-    9%,65% {opacity:1}
-    75%,100% {transform:translateX(var(--travel));opacity:0}
-  }
-  @keyframes orbit-signal { to {transform:rotate(360deg)} }
-  @keyframes cell-beat {0%,46%,100% {opacity:.58} 20% {opacity:1}}
-  @keyframes fill-meter {0% {transform:scaleX(.01)} 39%,100% {transform:scaleX(1)}}
   @media (prefers-reduced-motion: reduce) {
-    .counter-roll,.graph-reveal,.graph-scan,.scan-beam,.orbit-signal,.cell-beat,.metric-fill,.signal-flow,.gauge-fill {animation:none}
-    .counter-motion,.graph-scan,.scan-beam,.orbit-signal {display:none}
+    .counter-motion,.motion-decoration {display:none}
     .counter-static {display:inline}
+    .chart-reveal {clip-path:none}
   }
 </style>
 <g clip-path="url(#frame)">
@@ -62,7 +37,10 @@
 <text x="500" y="49" font-size="15" font-weight="700" fill="#d6baff" text-anchor="middle" letter-spacing="2.7">ESTUDIOS</text><text x="500" y="104" font-size="42.2" font-weight="750" fill="#fff6ff" text-anchor="middle">Formación y certificaciones</text><text x="500" y="143" font-size="18.0" font-weight="480" fill="#e6ddf8" text-anchor="middle">Ciencia de Datos, IA, ciberseguridad y cloud.</text><path d="M231 161H769" stroke="url(#shine)" stroke-width="1.5"/><rect x="43" y="185" width="914" height="133" rx="25" fill="url(#glass)" stroke="url(#edge)"/><path d="M68 186h864" stroke="url(#shine)"/><g transform="translate(868 222) scale(1.2)" fill="none" stroke="#edcaff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5v30h30 M9 26l7-9 6 4 11-13 M27 8h6v6"/></g><text x="67" y="227" font-size="26.4" font-weight="750" fill="#fff4ff" >Ingeniería en Informática</text><text x="67" y="262" font-size="21.1" font-weight="620" fill="#f1d7ff" >Mención Ciencia de Datos · Duoc UC</text><text x="67" y="291" font-size="17.6" font-weight="400" fill="#e6ddf8" >En curso · Sexto semestre</text><rect x="43" y="336" width="448" height="152" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M63 337h408" stroke="url(#shine)"/><g transform="translate(43 336)" aria-hidden="true">
   <clipPath id="sweep-43-336"><rect width="448" height="152" rx="20"/></clipPath>
   <g clip-path="url(#sweep-43-336)">
-    <g class="scan-beam" style="--travel:448px;--phase:-1.4s;--period:11.5s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-1.40s" dur="11.5s" repeatCount="indefinite"/>
       <rect width="112" height="152" fill="url(#scanner-glow)"/>
       <path d="M110 0v152" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
@@ -70,7 +48,10 @@
 </g><text x="65" y="374" font-size="22.9" font-weight="740" fill="#fff3ff" >IA generativa</text><text x="65" y="406" font-size="18.5" font-weight="400" fill="#e6ddf8" >Usando la IA Generativa</text><text x="65" y="432" font-size="18.5" font-weight="400" fill="#e6ddf8" ></text><text x="65" y="465" font-size="15.8" font-weight="620" fill="#ead2ff" >Duoc UC · 36 horas · 2026</text><rect x="509" y="336" width="448" height="152" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M529 337h408" stroke="url(#shine)"/><g transform="translate(509 336)" aria-hidden="true">
   <clipPath id="sweep-509-336"><rect width="448" height="152" rx="20"/></clipPath>
   <g clip-path="url(#sweep-509-336)">
-    <g class="scan-beam" style="--travel:448px;--phase:-2.8s;--period:11.5s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-2.80s" dur="11.5s" repeatCount="indefinite"/>
       <rect width="112" height="152" fill="url(#scanner-glow)"/>
       <path d="M110 0v152" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
@@ -78,7 +59,10 @@
 </g><text x="531" y="374" font-size="22.9" font-weight="740" fill="#fff3ff" >CEHPC</text><text x="531" y="406" font-size="18.5" font-weight="400" fill="#e6ddf8" >Ethical Hacking Professional</text><text x="531" y="432" font-size="18.5" font-weight="400" fill="#e6ddf8" >Certification</text><text x="531" y="465" font-size="15.8" font-weight="620" fill="#ead2ff" >CertiProf · 2026</text><rect x="43" y="503" width="448" height="152" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M63 504h408" stroke="url(#shine)"/><g transform="translate(43 503)" aria-hidden="true">
   <clipPath id="sweep-43-503"><rect width="448" height="152" rx="20"/></clipPath>
   <g clip-path="url(#sweep-43-503)">
-    <g class="scan-beam" style="--travel:448px;--phase:-4.199999999999999s;--period:11.5s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-4.20s" dur="11.5s" repeatCount="indefinite"/>
       <rect width="112" height="152" fill="url(#scanner-glow)"/>
       <path d="M110 0v152" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
@@ -86,7 +70,10 @@
 </g><text x="65" y="541" font-size="22.9" font-weight="740" fill="#fff3ff" >CSFPC</text><text x="65" y="573" font-size="18.5" font-weight="400" fill="#e6ddf8" >Cyber Security Foundation</text><text x="65" y="599" font-size="18.5" font-weight="400" fill="#e6ddf8" >Professional Certificate</text><text x="65" y="632" font-size="15.8" font-weight="620" fill="#ead2ff" >CertiProf · 2026</text><rect x="509" y="503" width="448" height="152" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M529 504h408" stroke="url(#shine)"/><g transform="translate(509 503)" aria-hidden="true">
   <clipPath id="sweep-509-503"><rect width="448" height="152" rx="20"/></clipPath>
   <g clip-path="url(#sweep-509-503)">
-    <g class="scan-beam" style="--travel:448px;--phase:-5.6s;--period:11.5s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-5.60s" dur="11.5s" repeatCount="indefinite"/>
       <rect width="112" height="152" fill="url(#scanner-glow)"/>
       <path d="M110 0v152" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
@@ -94,7 +81,10 @@
 </g><text x="531" y="541" font-size="22.9" font-weight="740" fill="#fff3ff" >CAPC</text><text x="531" y="573" font-size="18.5" font-weight="400" fill="#e6ddf8" >Cybersecurity Awareness</text><text x="531" y="599" font-size="18.5" font-weight="400" fill="#e6ddf8" >Professional Certification</text><text x="531" y="632" font-size="15.8" font-weight="620" fill="#ead2ff" >CertiProf · 2026</text><rect x="43" y="670" width="448" height="152" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M63 671h408" stroke="url(#shine)"/><g transform="translate(43 670)" aria-hidden="true">
   <clipPath id="sweep-43-670"><rect width="448" height="152" rx="20"/></clipPath>
   <g clip-path="url(#sweep-43-670)">
-    <g class="scan-beam" style="--travel:448px;--phase:-7.0s;--period:11.5s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-7.00s" dur="11.5s" repeatCount="indefinite"/>
       <rect width="112" height="152" fill="url(#scanner-glow)"/>
       <path d="M110 0v152" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
@@ -102,7 +92,10 @@
 </g><text x="65" y="708" font-size="22.9" font-weight="740" fill="#fff3ff" >AZ-900</text><text x="65" y="740" font-size="18.5" font-weight="400" fill="#e6ddf8" >Microsoft Certified</text><text x="65" y="766" font-size="18.5" font-weight="400" fill="#e6ddf8" >Azure Fundamentals</text><text x="65" y="799" font-size="15.8" font-weight="620" fill="#ead2ff" >Microsoft · 2026</text><rect x="509" y="670" width="448" height="152" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M529 671h408" stroke="url(#shine)"/><g transform="translate(509 670)" aria-hidden="true">
   <clipPath id="sweep-509-670"><rect width="448" height="152" rx="20"/></clipPath>
   <g clip-path="url(#sweep-509-670)">
-    <g class="scan-beam" style="--travel:448px;--phase:-8.399999999999999s;--period:11.5s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-8.40s" dur="11.5s" repeatCount="indefinite"/>
       <rect width="112" height="152" fill="url(#scanner-glow)"/>
       <path d="M110 0v152" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>

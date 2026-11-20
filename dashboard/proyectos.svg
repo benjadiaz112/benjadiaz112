@@ -21,35 +21,10 @@
 </defs>
 <style>
   .counter-static {display:none}
-  .counter-roll { animation: count-up 8s infinite; }
-  .graph-reveal { animation: reveal 8s cubic-bezier(.25,.6,.35,1) infinite; }
-  .graph-scan { animation: scan 8s ease-in-out infinite; }
-  .scan-beam { opacity:0; animation: sweep-across var(--period) linear var(--phase) infinite; }
-  .orbit-signal { transform-origin:0 0; animation: orbit-signal 9s linear infinite; }
-  .cell-beat { animation: cell-beat 5.5s ease-in-out infinite; }
-  .signal-flow {stroke-dasharray:8 11;animation:signal-flow 2.8s linear infinite}
-  .gauge-fill {animation:gauge 8s ease-out infinite}
-  @keyframes signal-flow {to {stroke-dashoffset:-38}}
-  @keyframes gauge {0% {stroke-dashoffset:100} 45%,100% {stroke-dashoffset:var(--target)}}
-  .metric-fill { transform-origin:0 0; animation: fill-meter 8s cubic-bezier(.25,.6,.35,1) infinite; }
-  @keyframes count-up {
-    0% { transform:translateY(0); }
-    35%,100% { transform:translateY(var(--end)); }
-  }
-  @keyframes reveal {0% {transform:scaleX(.001)} 42%,100% {transform:scaleX(1)}}
-  @keyframes scan {0% {transform:translateX(-161px);opacity:0} 8% {opacity:1} 86%,100% {transform:translateX(902px);opacity:0}}
-  @keyframes sweep-across {
-    0% {transform:translateX(-114px);opacity:0}
-    9%,65% {opacity:1}
-    75%,100% {transform:translateX(var(--travel));opacity:0}
-  }
-  @keyframes orbit-signal { to {transform:rotate(360deg)} }
-  @keyframes cell-beat {0%,46%,100% {opacity:.58} 20% {opacity:1}}
-  @keyframes fill-meter {0% {transform:scaleX(.01)} 39%,100% {transform:scaleX(1)}}
   @media (prefers-reduced-motion: reduce) {
-    .counter-roll,.graph-reveal,.graph-scan,.scan-beam,.orbit-signal,.cell-beat,.metric-fill,.signal-flow,.gauge-fill {animation:none}
-    .counter-motion,.graph-scan,.scan-beam,.orbit-signal {display:none}
+    .counter-motion,.motion-decoration {display:none}
     .counter-static {display:inline}
+    .chart-reveal {clip-path:none}
   }
 </style>
 <g clip-path="url(#frame)">
@@ -62,7 +37,10 @@
 <text x="500" y="49" font-size="15" font-weight="700" fill="#d6baff" text-anchor="middle" letter-spacing="2.7">PORTAFOLIO</text><text x="500" y="104" font-size="42.2" font-weight="750" fill="#fff6ff" text-anchor="middle">Proyectos destacados</text><text x="500" y="143" font-size="18.0" font-weight="480" fill="#e6ddf8" text-anchor="middle">Aplicaciones web, análisis de datos, Android y seguridad.</text><path d="M231 161H769" stroke="url(#shine)" stroke-width="1.5"/><rect x="43" y="181" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M64 182h406" stroke="url(#shine)"/><g transform="translate(43 181)" aria-hidden="true">
   <clipPath id="sweep-43-181"><rect width="448" height="100" rx="21"/></clipPath>
   <g clip-path="url(#sweep-43-181)">
-    <g class="scan-beam" style="--travel:448px;--phase:-1.1s;--period:11s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-1.10s" dur="11s" repeatCount="indefinite"/>
       <rect width="112" height="100" fill="url(#scanner-glow)"/>
       <path d="M110 0v100" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
@@ -70,7 +48,10 @@
 </g><text x="62" y="215" font-size="20.2" font-weight="710" fill="#fff4ff" >Spotify Tracks</text><text x="62" y="241" font-size="15.4" font-weight="400" fill="#e6ddf8" >Modelado de popularidad musical</text><text x="62" y="264" font-size="15" font-weight="630" fill="#e2bcff" >Python · scikit-learn</text><rect x="509" y="181" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M530 182h406" stroke="url(#shine)"/><g transform="translate(509 181)" aria-hidden="true">
   <clipPath id="sweep-509-181"><rect width="448" height="100" rx="21"/></clipPath>
   <g clip-path="url(#sweep-509-181)">
-    <g class="scan-beam" style="--travel:448px;--phase:-2.2s;--period:11s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-2.20s" dur="11s" repeatCount="indefinite"/>
       <rect width="112" height="100" fill="url(#scanner-glow)"/>
       <path d="M110 0v100" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
@@ -78,7 +59,10 @@
 </g><text x="528" y="215" font-size="20.2" font-weight="710" fill="#fff4ff" >Ryde</text><text x="528" y="241" font-size="15.4" font-weight="400" fill="#e6ddf8" >Plataforma web y administración</text><text x="528" y="264" font-size="15" font-weight="630" fill="#e2bcff" >TypeScript · Node.js · PostgreSQL</text><rect x="43" y="293" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M64 294h406" stroke="url(#shine)"/><g transform="translate(43 293)" aria-hidden="true">
   <clipPath id="sweep-43-293"><rect width="448" height="100" rx="21"/></clipPath>
   <g clip-path="url(#sweep-43-293)">
-    <g class="scan-beam" style="--travel:448px;--phase:-3.3000000000000003s;--period:11s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-3.30s" dur="11s" repeatCount="indefinite"/>
       <rect width="112" height="100" fill="url(#scanner-glow)"/>
       <path d="M110 0v100" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
@@ -86,7 +70,10 @@
 </g><text x="62" y="327" font-size="20.2" font-weight="710" fill="#fff4ff" >Clínica dental y facial</text><text x="62" y="353" font-size="15.4" font-weight="400" fill="#e6ddf8" >Catálogo y reserva de demostración</text><text x="62" y="376" font-size="15" font-weight="630" fill="#e2bcff" >React · Next.js</text><rect x="509" y="293" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M530 294h406" stroke="url(#shine)"/><g transform="translate(509 293)" aria-hidden="true">
   <clipPath id="sweep-509-293"><rect width="448" height="100" rx="21"/></clipPath>
   <g clip-path="url(#sweep-509-293)">
-    <g class="scan-beam" style="--travel:448px;--phase:-4.4s;--period:11s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-4.40s" dur="11s" repeatCount="indefinite"/>
       <rect width="112" height="100" fill="url(#scanner-glow)"/>
       <path d="M110 0v100" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
@@ -94,7 +81,10 @@
 </g><text x="528" y="327" font-size="20.2" font-weight="710" fill="#fff4ff" >Trazabilidad de fruta</text><text x="528" y="353" font-size="15.4" font-weight="400" fill="#e6ddf8" >DApp para estado y cadena de frío</text><text x="528" y="376" font-size="15" font-weight="630" fill="#e2bcff" >Solidity · Remix IDE</text><rect x="43" y="405" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M64 406h406" stroke="url(#shine)"/><g transform="translate(43 405)" aria-hidden="true">
   <clipPath id="sweep-43-405"><rect width="448" height="100" rx="21"/></clipPath>
   <g clip-path="url(#sweep-43-405)">
-    <g class="scan-beam" style="--travel:448px;--phase:-5.5s;--period:11s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-5.50s" dur="11s" repeatCount="indefinite"/>
       <rect width="112" height="100" fill="url(#scanner-glow)"/>
       <path d="M110 0v100" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
@@ -102,7 +92,10 @@
 </g><text x="62" y="439" font-size="20.2" font-weight="710" fill="#fff4ff" >StreamView Analytics</text><text x="62" y="465" font-size="15.4" font-weight="400" fill="#e6ddf8" >Exploración y visualización de contenidos</text><text x="62" y="488" font-size="15" font-weight="630" fill="#e2bcff" >Streamlit · D3.js · Power BI</text><rect x="509" y="405" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M530 406h406" stroke="url(#shine)"/><g transform="translate(509 405)" aria-hidden="true">
   <clipPath id="sweep-509-405"><rect width="448" height="100" rx="21"/></clipPath>
   <g clip-path="url(#sweep-509-405)">
-    <g class="scan-beam" style="--travel:448px;--phase:-6.6000000000000005s;--period:11s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-6.60s" dur="11s" repeatCount="indefinite"/>
       <rect width="112" height="100" fill="url(#scanner-glow)"/>
       <path d="M110 0v100" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
@@ -110,7 +103,10 @@
 </g><text x="528" y="439" font-size="20.2" font-weight="710" fill="#fff4ff" >Viemms Store</text><text x="528" y="465" font-size="15.4" font-weight="400" fill="#e6ddf8" >Catálogo y administración en Android</text><text x="528" y="488" font-size="15" font-weight="630" fill="#e2bcff" >Kotlin · Firebase</text><rect x="43" y="517" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M64 518h406" stroke="url(#shine)"/><g transform="translate(43 517)" aria-hidden="true">
   <clipPath id="sweep-43-517"><rect width="448" height="100" rx="21"/></clipPath>
   <g clip-path="url(#sweep-43-517)">
-    <g class="scan-beam" style="--travel:448px;--phase:-7.700000000000001s;--period:11s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-7.70s" dur="11s" repeatCount="indefinite"/>
       <rect width="112" height="100" fill="url(#scanner-glow)"/>
       <path d="M110 0v100" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
@@ -118,7 +114,10 @@
 </g><text x="62" y="551" font-size="20.2" font-weight="710" fill="#fff4ff" >Vexum</text><text x="62" y="577" font-size="15.4" font-weight="400" fill="#e6ddf8" >Servicios de software, automatización e IA</text><text x="62" y="600" font-size="15" font-weight="630" fill="#e2bcff" >React · TypeScript · Tailwind CSS</text><rect x="509" y="517" width="448" height="100" rx="21" fill="url(#glass)" stroke="url(#edge)"/><path d="M530 518h406" stroke="url(#shine)"/><g transform="translate(509 517)" aria-hidden="true">
   <clipPath id="sweep-509-517"><rect width="448" height="100" rx="21"/></clipPath>
   <g clip-path="url(#sweep-509-517)">
-    <g class="scan-beam" style="--travel:448px;--phase:-8.8s;--period:11s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;448 0;448 0" keyTimes="0;.78;1"
+        begin="-8.80s" dur="11s" repeatCount="indefinite"/>
       <rect width="112" height="100" fill="url(#scanner-glow)"/>
       <path d="M110 0v100" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>

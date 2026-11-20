@@ -21,35 +21,10 @@
 </defs>
 <style>
   .counter-static {display:none}
-  .counter-roll { animation: count-up 8s infinite; }
-  .graph-reveal { animation: reveal 8s cubic-bezier(.25,.6,.35,1) infinite; }
-  .graph-scan { animation: scan 8s ease-in-out infinite; }
-  .scan-beam { opacity:0; animation: sweep-across var(--period) linear var(--phase) infinite; }
-  .orbit-signal { transform-origin:0 0; animation: orbit-signal 9s linear infinite; }
-  .cell-beat { animation: cell-beat 5.5s ease-in-out infinite; }
-  .signal-flow {stroke-dasharray:8 11;animation:signal-flow 2.8s linear infinite}
-  .gauge-fill {animation:gauge 8s ease-out infinite}
-  @keyframes signal-flow {to {stroke-dashoffset:-38}}
-  @keyframes gauge {0% {stroke-dashoffset:100} 45%,100% {stroke-dashoffset:var(--target)}}
-  .metric-fill { transform-origin:0 0; animation: fill-meter 8s cubic-bezier(.25,.6,.35,1) infinite; }
-  @keyframes count-up {
-    0% { transform:translateY(0); }
-    35%,100% { transform:translateY(var(--end)); }
-  }
-  @keyframes reveal {0% {transform:scaleX(.001)} 42%,100% {transform:scaleX(1)}}
-  @keyframes scan {0% {transform:translateX(-161px);opacity:0} 8% {opacity:1} 86%,100% {transform:translateX(902px);opacity:0}}
-  @keyframes sweep-across {
-    0% {transform:translateX(-114px);opacity:0}
-    9%,65% {opacity:1}
-    75%,100% {transform:translateX(var(--travel));opacity:0}
-  }
-  @keyframes orbit-signal { to {transform:rotate(360deg)} }
-  @keyframes cell-beat {0%,46%,100% {opacity:.58} 20% {opacity:1}}
-  @keyframes fill-meter {0% {transform:scaleX(.01)} 39%,100% {transform:scaleX(1)}}
   @media (prefers-reduced-motion: reduce) {
-    .counter-roll,.graph-reveal,.graph-scan,.scan-beam,.orbit-signal,.cell-beat,.metric-fill,.signal-flow,.gauge-fill {animation:none}
-    .counter-motion,.graph-scan,.scan-beam,.orbit-signal {display:none}
+    .counter-motion,.motion-decoration {display:none}
     .counter-static {display:inline}
+    .chart-reveal {clip-path:none}
   }
 </style>
 <g clip-path="url(#frame)">
@@ -59,29 +34,41 @@
 <rect width="1000" height="484" fill="url(#dots)"/>
 <rect x="1" y="1" width="998" height="482" rx="30" fill="none" stroke="url(#edge)"/>
 <path d="M45 21H22V45M955 21h23v24M22 439v24h23M978 439v24h-23" stroke="#d5a4fc" stroke-opacity=".72" fill="none" stroke-width="1.25"/>
-<text x="500" y="49" font-size="15" font-weight="700" fill="#d6baff" text-anchor="middle" letter-spacing="2.7">INTELIGENCIA ARTIFICIAL</text><text x="500" y="104" font-size="42.2" font-weight="750" fill="#fff6ff" text-anchor="middle">Ingeniería de IA</text><text x="500" y="143" font-size="18.0" font-weight="480" fill="#e6ddf8" text-anchor="middle">Modelado, automatización y protección de datos.</text><path d="M231 161H769" stroke="url(#shine)" stroke-width="1.5"/><path d="M180 213H820M180 213v26m320-26v26m320-26v26" fill="none" stroke="#9d62c8" stroke-width="2"/><path class="signal-flow" d="M180 213H820" stroke="#edb9ff" stroke-width="2.5"/><circle class="cell-beat" cx="180" cy="213" r="5" fill="#ffceff" style="animation-delay:0.0s"/><circle class="cell-beat" cx="500" cy="213" r="5" fill="#ffceff" style="animation-delay:0.6s"/><circle class="cell-beat" cx="820" cy="213" r="5" fill="#ffceff" style="animation-delay:1.2s"/><rect x="43" y="242" width="294" height="211" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M63 243h254" stroke="url(#shine)"/><g transform="translate(43 242)" aria-hidden="true">
+<text x="500" y="49" font-size="15" font-weight="700" fill="#d6baff" text-anchor="middle" letter-spacing="2.7">INTELIGENCIA ARTIFICIAL</text><text x="500" y="104" font-size="42.2" font-weight="750" fill="#fff6ff" text-anchor="middle">Ingeniería de IA</text><text x="500" y="143" font-size="18.0" font-weight="480" fill="#e6ddf8" text-anchor="middle">Modelado, automatización y protección de datos.</text><path d="M231 161H769" stroke="url(#shine)" stroke-width="1.5"/><path d="M180 213H820M180 213v26m320-26v26m320-26v26" fill="none" stroke="#9d62c8" stroke-width="2"/><path class="motion-decoration" d="M180 213H820" fill="none" stroke="#edb9ff"
+  stroke-width="2.5" stroke-dasharray="8 11">
+  <animate attributeName="stroke-dashoffset" from="0" to="-38" dur="2.8s" repeatCount="indefinite"/>
+</path><circle cx="180" cy="213" r="5" fill="#ffceff"/><circle cx="500" cy="213" r="5" fill="#ffceff"/><circle cx="820" cy="213" r="5" fill="#ffceff"/><rect x="43" y="242" width="294" height="211" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M63 243h254" stroke="url(#shine)"/><g transform="translate(43 242)" aria-hidden="true">
   <clipPath id="sweep-43-242"><rect width="294" height="211" rx="20"/></clipPath>
   <g clip-path="url(#sweep-43-242)">
-    <g class="scan-beam" style="--travel:294px;--phase:-1.5s;--period:9.5s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;294 0;294 0" keyTimes="0;.78;1"
+        begin="-1.50s" dur="9.5s" repeatCount="indefinite"/>
       <rect width="112" height="211" fill="url(#scanner-glow)"/>
       <path d="M110 0v211" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
   </g>
-</g><path d="M50 244h280" stroke="url(#accent)" stroke-width="2.2" opacity=".8"/><g transform="translate(288 264) scale(0.73)" fill="none" stroke="#edcaff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12 21 6 32 16 27 31 11 29z M8 12l19 19 M21 6 11 29 M32 16 8 12 M21 6l6 25"/></g><text x="64" y="285" font-size="21.1" font-weight="735" fill="#fff4ff" >Machine Learning</text><text x="64" y="312" font-size="15.4" font-weight="560" fill="#e9caff" >Modelado y evaluación</text><rect x="64" y="333" width="85" height="30" rx="9" fill="#5c3487" fill-opacity=".6" stroke="#c494eb" stroke-opacity=".46"/><text x="76" y="354" font-size="15" font-weight="700" fill="#f6deff" >Python</text><rect x="157" y="333" width="145" height="30" rx="9" fill="#5c3487" fill-opacity=".6" stroke="#c494eb" stroke-opacity=".46"/><text x="169" y="354" font-size="15" font-weight="700" fill="#f6deff" >scikit-learn</text><text x="64" y="393" font-size="16.3" font-weight="400" fill="#e6ddf8" >Regresión · K-Means · PCA</text><text x="64" y="417" font-size="16.3" font-weight="400" fill="#e6ddf8" >Ensambles · Validación</text><path d="M64 435h252" stroke="#a776d3" stroke-opacity=".28"/><circle class="cell-beat" cx="313" cy="435" r="3.6" fill="#f9cfff"/><rect x="353" y="242" width="294" height="211" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M373 243h254" stroke="url(#shine)"/><g transform="translate(353 242)" aria-hidden="true">
+</g><path d="M50 244h280" stroke="url(#accent)" stroke-width="2.2" opacity=".8"/><g transform="translate(288 264) scale(0.73)" fill="none" stroke="#edcaff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12 21 6 32 16 27 31 11 29z M8 12l19 19 M21 6 11 29 M32 16 8 12 M21 6l6 25"/></g><text x="64" y="285" font-size="21.1" font-weight="735" fill="#fff4ff" >Machine Learning</text><text x="64" y="312" font-size="15.4" font-weight="560" fill="#e9caff" >Modelado y evaluación</text><rect x="64" y="333" width="85" height="30" rx="9" fill="#5c3487" fill-opacity=".6" stroke="#c494eb" stroke-opacity=".46"/><text x="76" y="354" font-size="15" font-weight="700" fill="#f6deff" >Python</text><rect x="157" y="333" width="145" height="30" rx="9" fill="#5c3487" fill-opacity=".6" stroke="#c494eb" stroke-opacity=".46"/><text x="169" y="354" font-size="15" font-weight="700" fill="#f6deff" >scikit-learn</text><text x="64" y="393" font-size="16.3" font-weight="400" fill="#e6ddf8" >Regresión · K-Means · PCA</text><text x="64" y="417" font-size="16.3" font-weight="400" fill="#e6ddf8" >Ensambles · Validación</text><path d="M64 435h252" stroke="#a776d3" stroke-opacity=".28"/><circle cx="313" cy="435" r="3.6" fill="#f9cfff"/><rect x="353" y="242" width="294" height="211" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M373 243h254" stroke="url(#shine)"/><g transform="translate(353 242)" aria-hidden="true">
   <clipPath id="sweep-353-242"><rect width="294" height="211" rx="20"/></clipPath>
   <g clip-path="url(#sweep-353-242)">
-    <g class="scan-beam" style="--travel:294px;--phase:-3.1315789473684212s;--period:9.5s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;294 0;294 0" keyTimes="0;.78;1"
+        begin="-3.13s" dur="9.5s" repeatCount="indefinite"/>
       <rect width="112" height="211" fill="url(#scanner-glow)"/>
       <path d="M110 0v211" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
   </g>
-</g><path d="M360 244h280" stroke="url(#accent)" stroke-width="2.2" opacity=".8"/><g transform="translate(598 264) scale(0.73)" fill="none" stroke="#edcaff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 3 35 11v17L20 36 5 28V11z M13 20h14 M20 13v14"/></g><text x="374" y="285" font-size="21.1" font-weight="735" fill="#fff4ff" >IA generativa</text><text x="374" y="312" font-size="15.4" font-weight="560" fill="#e9caff" >Software y automatización</text><rect x="374" y="333" width="75" height="30" rx="9" fill="#5c3487" fill-opacity=".6" stroke="#c494eb" stroke-opacity=".46"/><text x="386" y="354" font-size="15" font-weight="700" fill="#f6deff" >Vexum</text><rect x="457" y="333" width="105" height="30" rx="9" fill="#5c3487" fill-opacity=".6" stroke="#c494eb" stroke-opacity=".46"/><text x="469" y="354" font-size="15" font-weight="700" fill="#f6deff" >Pinecone</text><text x="374" y="393" font-size="16.3" font-weight="400" fill="#e6ddf8" >Iniciativa de software e IA</text><text x="374" y="417" font-size="16.3" font-weight="400" fill="#e6ddf8" >Formación en IA generativa</text><path d="M374 435h252" stroke="#a776d3" stroke-opacity=".28"/><circle class="cell-beat" cx="623" cy="435" r="3.6" fill="#f9cfff"/><rect x="663" y="242" width="294" height="211" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M683 243h254" stroke="url(#shine)"/><g transform="translate(663 242)" aria-hidden="true">
+</g><path d="M360 244h280" stroke="url(#accent)" stroke-width="2.2" opacity=".8"/><g transform="translate(598 264) scale(0.73)" fill="none" stroke="#edcaff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 3 35 11v17L20 36 5 28V11z M13 20h14 M20 13v14"/></g><text x="374" y="285" font-size="21.1" font-weight="735" fill="#fff4ff" >IA generativa</text><text x="374" y="312" font-size="15.4" font-weight="560" fill="#e9caff" >Software y automatización</text><rect x="374" y="333" width="75" height="30" rx="9" fill="#5c3487" fill-opacity=".6" stroke="#c494eb" stroke-opacity=".46"/><text x="386" y="354" font-size="15" font-weight="700" fill="#f6deff" >Vexum</text><rect x="457" y="333" width="105" height="30" rx="9" fill="#5c3487" fill-opacity=".6" stroke="#c494eb" stroke-opacity=".46"/><text x="469" y="354" font-size="15" font-weight="700" fill="#f6deff" >Pinecone</text><text x="374" y="393" font-size="16.3" font-weight="400" fill="#e6ddf8" >Iniciativa de software e IA</text><text x="374" y="417" font-size="16.3" font-weight="400" fill="#e6ddf8" >Formación en IA generativa</text><path d="M374 435h252" stroke="#a776d3" stroke-opacity=".28"/><circle cx="623" cy="435" r="3.6" fill="#f9cfff"/><rect x="663" y="242" width="294" height="211" rx="20" fill="url(#glass)" stroke="url(#edge)"/><path d="M683 243h254" stroke="url(#shine)"/><g transform="translate(663 242)" aria-hidden="true">
   <clipPath id="sweep-663-242"><rect width="294" height="211" rx="20"/></clipPath>
   <g clip-path="url(#sweep-663-242)">
-    <g class="scan-beam" style="--travel:294px;--phase:-4.7631578947368425s;--period:9.5s">
+    <g class="motion-decoration" transform="translate(-114 0)">
+      <animateTransform attributeName="transform" type="translate"
+        values="-114 0;294 0;294 0" keyTimes="0;.78;1"
+        begin="-4.76s" dur="9.5s" repeatCount="indefinite"/>
       <rect width="112" height="211" fill="url(#scanner-glow)"/>
       <path d="M110 0v211" stroke="#f4cdff" stroke-width="2" stroke-opacity=".63"/>
     </g>
   </g>
-</g><path d="M670 244h280" stroke="url(#accent)" stroke-width="2.2" opacity=".8"/><g transform="translate(908 264) scale(0.73)" fill="none" stroke="#edcaff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4 34 10v9c0 8-7 14-14 17-7-3-14-9-14-17v-9z M13 21l5 5 9-10"/></g><text x="684" y="285" font-size="21.1" font-weight="735" fill="#fff4ff" >Seguridad en IA</text><text x="684" y="312" font-size="15.4" font-weight="560" fill="#e9caff" >Gobernanza y privacidad</text><rect x="684" y="333" width="75" height="30" rx="9" fill="#5c3487" fill-opacity=".6" stroke="#c494eb" stroke-opacity=".46"/><text x="696" y="354" font-size="15" font-weight="700" fill="#f6deff" >DELIA</text><rect x="767" y="333" width="85" height="30" rx="9" fill="#5c3487" fill-opacity=".6" stroke="#c494eb" stroke-opacity=".46"/><text x="779" y="354" font-size="15" font-weight="700" fill="#f6deff" >Python</text><text x="684" y="393" font-size="16.3" font-weight="400" fill="#e6ddf8" >Enmascaramiento de datos</text><text x="684" y="417" font-size="16.3" font-weight="400" fill="#e6ddf8" >Pruebas y benchmarks</text><path d="M684 435h252" stroke="#a776d3" stroke-opacity=".28"/><circle class="cell-beat" cx="933" cy="435" r="3.6" fill="#f9cfff"/>
+</g><path d="M670 244h280" stroke="url(#accent)" stroke-width="2.2" opacity=".8"/><g transform="translate(908 264) scale(0.73)" fill="none" stroke="#edcaff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4 34 10v9c0 8-7 14-14 17-7-3-14-9-14-17v-9z M13 21l5 5 9-10"/></g><text x="684" y="285" font-size="21.1" font-weight="735" fill="#fff4ff" >Seguridad en IA</text><text x="684" y="312" font-size="15.4" font-weight="560" fill="#e9caff" >Gobernanza y privacidad</text><rect x="684" y="333" width="75" height="30" rx="9" fill="#5c3487" fill-opacity=".6" stroke="#c494eb" stroke-opacity=".46"/><text x="696" y="354" font-size="15" font-weight="700" fill="#f6deff" >DELIA</text><rect x="767" y="333" width="85" height="30" rx="9" fill="#5c3487" fill-opacity=".6" stroke="#c494eb" stroke-opacity=".46"/><text x="779" y="354" font-size="15" font-weight="700" fill="#f6deff" >Python</text><text x="684" y="393" font-size="16.3" font-weight="400" fill="#e6ddf8" >Enmascaramiento de datos</text><text x="684" y="417" font-size="16.3" font-weight="400" fill="#e6ddf8" >Pruebas y benchmarks</text><path d="M684 435h252" stroke="#a776d3" stroke-opacity=".28"/><circle cx="933" cy="435" r="3.6" fill="#f9cfff"/>
 </g></svg>
