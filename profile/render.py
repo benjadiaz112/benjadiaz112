@@ -122,20 +122,19 @@ orbital = '''
 hero = orbital + eyebrow(43,62,"PORTAFOLIO DE DESARROLLO") + text(39,149,"Benjamín Díaz",70,"#fff6ff",775) + text(39,225,"Donoso",70,"#ead4ff",775)
 hero += text(45,278,"Full Stack · Ciencia de Datos",28,"#fff2ff",650) + text(45,313,"Machine Learning · Ciberseguridad",26,"#e4d5f6",520)
 hero += '<path d="M45 348H955" stroke="#c9a4fd" opacity=".34"/>' + text(45,389,"@benjadiaz112",21,"#f0d9ff",650) + text(955,389,"CHILE",15,"#dfc5f3",700,'text-anchor="end" letter-spacing="2"')
-hero += panel(43,429,914,267)
-hero += scan_sweep(43,429,914,267,25,phase=-2,period=13)
+hero += panel(43,429,914,235)
+hero += scan_sweep(43,429,914,235,25,phase=-2,period=13)
 hero += eyebrow(66,466,"SOBRE MÍ")
 hero += text(66,507,"Desarrollo aplicaciones web y proyectos de análisis de datos.",28,"#fff4ff",700)
 hero += text(66,543,"Conecto la interfaz, el backend y los datos para construir herramientas",24)
 hero += text(66,574,"que ayuden a gestionar procesos y tomar decisiones.",24)
 hero += '<path d="M66 597H932" stroke="url(#edge)"/>'
 hero += text(66,627,"Duoc UC · Ingeniería en Informática, mención Ciencia de Datos",22,"#e9caff",640)
-hero += text(66,659,"Busco oportunidades junior, colaboraciones freelance y proyectos remotos.",22)
 svg("portada","Benjamín Díaz Donoso",
     "Desarrollo Full Stack, Ciencia de Datos, Machine Learning y Ciberseguridad en Chile. "
     "Desarrollo aplicaciones web y proyectos de análisis de datos. Conecto la interfaz, el backend y los datos para construir herramientas que ayuden a gestionar procesos y tomar decisiones. "
-    "Estudio Ingeniería en Informática, mención Ciencia de Datos, en Duoc UC. Busco oportunidades junior, colaboraciones freelance y proyectos remotos.",
-    731,hero,True)
+    "Estudio Ingeniería en Informática, mención Ciencia de Datos, en Duoc UC.",
+    699,hero,True)
 
 icons = {
     "screen":"M3 5h34v23H3z M14 34h12 M20 28v6 M9 11h22 M9 17h11",

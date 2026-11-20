@@ -1,4 +1,4 @@
-<img src="dashboard/portada.svg" width="100%" alt="Benjamín Díaz Donoso. Desarrollo aplicaciones web y proyectos de análisis de datos. Conecto la interfaz, el backend y los datos para construir herramientas que ayuden a gestionar procesos y tomar decisiones. Estudio Ingeniería en Informática, mención Ciencia de Datos, en Duoc UC. Busco oportunidades junior, colaboraciones freelance y proyectos remotos." />
+<img src="dashboard/portada.svg" width="100%" alt="Benjamín Díaz Donoso. Desarrollo aplicaciones web y proyectos de análisis de datos. Conecto la interfaz, el backend y los datos para construir herramientas que ayuden a gestionar procesos y tomar decisiones. Estudio Ingeniería en Informática, mención Ciencia de Datos, en Duoc UC." />
 
 <img src="dashboard/stack.svg" width="100%" alt="Stack de desarrollo por área. Frontend, backend, datos, cloud, Machine Learning, BI, móvil y blockchain." />
 
