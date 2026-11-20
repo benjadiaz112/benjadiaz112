@@ -45,6 +45,7 @@ def svg(name, title, description, h, body, hero=False):
   <radialGradient id="orb" cx=".37" cy=".26" r=".71"><stop stop-color="#eedaff" stop-opacity=".71"/><stop offset=".35" stop-color="#a758ed" stop-opacity=".34"/><stop offset=".69" stop-color="#38236e" stop-opacity=".11"/><stop offset="1" stop-color="#e4b3ff" stop-opacity=".5"/></radialGradient>
   <pattern id="dots" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M0 25V0H25" stroke="#bc94ed" stroke-opacity=".11" fill="none"/><circle cx="3" cy="3" r="1" fill="#e0c8ff" opacity=".18"/></pattern>
   <clipPath id="frame"><rect width="1000" height="{h}" rx="31"/></clipPath>
+  <clipPath id="counter-window"><rect width="253" height="70"/></clipPath>
 </defs>
 <style>
   .counter-static {{display:none}}
@@ -58,7 +59,7 @@ def svg(name, title, description, h, body, hero=False):
   @keyframes gauge {{0% {{stroke-dashoffset:100}} 45%,100% {{stroke-dashoffset:var(--target)}}}}
   .metric-fill {{ transform-origin:0 0; animation: fill-meter 8s cubic-bezier(.25,.6,.35,1) infinite; }}
   @keyframes count-up {{
-    0% {{ transform:translateY(0); animation-timing-function:steps(var(--frames),end); }}
+    0% {{ transform:translateY(0); }}
     35%,100% {{ transform:translateY(var(--end)); }}
   }}
   @keyframes reveal {{0% {{transform:scaleX(.001)}} 42%,100% {{transform:scaleX(1)}}}}
@@ -232,9 +233,9 @@ def counter(x, y, value, decimals=0):
     ) + number(value, 63 + frames * stride)
     return (
         f'<g transform="translate({x} {y})">'
-        f'<g class="counter-motion"><svg width="253" height="75" overflow="hidden">'
-        f'<g class="counter-roll" style="--frames:{frames};--end:{-frames*stride}px">{sequence}</g>'
-        '</svg></g>'
+        '<g class="counter-motion" clip-path="url(#counter-window)">'
+        f'<g class="counter-roll" style="animation-timing-function:steps({frames},end);--end:{-frames*stride}px">{sequence}</g>'
+        '</g>'
         f'<g class="counter-static">{number(value, 63)}</g></g>'
     )
 
