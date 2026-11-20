@@ -438,5 +438,5 @@ contact += '<path d="M910 56h43m-12-12 12 12-12 12" fill="none" stroke="#f0caff"
 svg("contacto","Contacto en LinkedIn","LinkedIn de Benjamín Díaz Donoso para oportunidades y colaboración.",106,contact)
 
 details_card = text(45,60,"Detalles y enlaces del portafolio",31,"#fff4ff",710)
-details_card += '<path d="M903 40l16 16 16-16" stroke="#f0caff" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>'
+details_card += '<path d="M903 49h42m-12-12 12 12-12 12" stroke="#f0caff" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>'
 svg("enlaces","Detalles y enlaces del portafolio","Abrir tecnologías, proyectos y enlaces del portafolio.",95,details_card)

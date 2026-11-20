@@ -45,5 +45,5 @@
 <rect width="1000" height="95" fill="url(#dots)"/>
 <rect x="1" y="1" width="998" height="93" rx="30" fill="none" stroke="url(#edge)"/>
 <path d="M45 21H22V45M955 21h23v24M22 50v24h23M978 50v24h-23" stroke="#d5a4fc" stroke-opacity=".72" fill="none" stroke-width="1.25"/>
-<text x="45" y="60" font-size="31" font-weight="710" fill="#fff4ff" >Detalles y enlaces del portafolio</text><path d="M903 40l16 16 16-16" stroke="#f0caff" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="45" y="60" font-size="31" font-weight="710" fill="#fff4ff" >Detalles y enlaces del portafolio</text><path d="M903 49h42m-12-12 12 12-12 12" stroke="#f0caff" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
 </g></svg>
