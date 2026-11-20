@@ -8,8 +8,6 @@
 
 Desarrollo aplicaciones web y proyectos de análisis de datos. Me interesa conectar la interfaz, el backend y los datos para construir herramientas que ayuden a gestionar procesos y tomar decisiones. Estudio Ingeniería en Informática con mención en Ciencia de Datos en Duoc UC. Busco oportunidades junior, colaboraciones freelance y proyectos remotos en software y datos.
 
-<img id="actividad" src="dashboard/actividad.svg" width="100%" alt="Actividad de GitHub al 20 de noviembre de 2026. 1.015 contribuciones públicas y privadas en 2026, 10 repositorios públicos y 1 seguidor. El gráfico semanal y el calendario muestran contribuciones públicas." />
-
 <img src="dashboard/stack.svg" width="100%" alt="Stack de desarrollo por área. La lista de tecnologías está disponible debajo." />
 
 <details>
@@ -29,6 +27,8 @@ Desarrollo aplicaciones web y proyectos de análisis de datos. Me interesa conec
 | Metodologías | Scrum y CRISP-DM |
 
 </details>
+
+<img src="dashboard/arquitectura.svg" width="100%" alt="Arquitectura de sistemas. Flujo de cliente, API, servicios y datos, con infraestructura, autenticación y validación." />
 
 <img src="dashboard/ia.svg" width="100%" alt="IA, datos y seguridad. Machine Learning, Vexum, formación en IA generativa, Pinecone y contribuciones de privacidad a DELIA." />
 
@@ -58,6 +58,10 @@ Desarrollo aplicaciones web y proyectos de análisis de datos. Me interesa conec
 <img src="dashboard/metricas.svg" width="100%" alt="Spotify Tracks analizó 89.495 canciones. Obtuvo R² de 0,830, MAE de 5,02 y RMSE de 8,50 sobre 17.913 canciones de reserva. StreamView Analytics permite explorar 31.991 títulos." />
 
 [Resultados de Spotify Tracks](https://github.com/benjadiaz112/spotify-tracks-eda/tree/feat/spotify-ep3) · [StreamView Analytics](https://github.com/fluzxks/StreamView_project_exp2)
+
+<img id="actividad" src="dashboard/actividad.svg" width="100%" alt="Actividad en GitHub. Total anual de contribuciones públicas y privadas, repositorios, seguidores, estrellas, forks, días activos y calendario anonimizado." />
+
+[Calendario de GitHub](https://github.com/benjadiaz112#contribution-activity) · [Actualización automática del dashboard](https://github.com/benjadiaz112/benjadiaz112/actions/workflows/profile-dashboard.yml)
 
 ## Formación y certificaciones
 
