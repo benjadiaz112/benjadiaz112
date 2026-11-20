@@ -8,7 +8,7 @@
 
 Desarrollo aplicaciones web y proyectos de análisis de datos. Me interesa conectar la interfaz, el backend y los datos para construir herramientas que ayuden a gestionar procesos y tomar decisiones. Estudio Ingeniería en Informática con mención en Ciencia de Datos en Duoc UC. Busco oportunidades junior, colaboraciones freelance y proyectos remotos en software y datos.
 
-<img id="actividad" src="dashboard/actividad.svg" width="100%" alt="Actividad de GitHub al 20 de noviembre de 2026. 263 contribuciones en el último año, 10 repositorios públicos y 1 seguidor. Incluye un gráfico semanal y un calendario de contribuciones." />
+<img id="actividad" src="dashboard/actividad.svg" width="100%" alt="Actividad de GitHub al 20 de noviembre de 2026. 1.015 contribuciones públicas y privadas en 2026, 10 repositorios públicos y 1 seguidor. El gráfico semanal y el calendario muestran contribuciones públicas." />
 
 <img src="dashboard/stack.svg" width="100%" alt="Stack de desarrollo por área. La lista de tecnologías está disponible debajo." />
 
