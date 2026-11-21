@@ -1,12 +1,16 @@
 import argparse
 import json
+import re
+from hashlib import sha256
 from html import escape
 from pathlib import Path
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 cli = argparse.ArgumentParser()
 cli.add_argument("--stats", type=Path, default=Path(__file__).with_name("stats.json"))
 cli.add_argument("--output", type=Path, default=Path("."))
+cli.add_argument("--publish-activity", action="store_true")
 options = cli.parse_args()
 stats = json.loads(options.stats.read_text(encoding="utf-8"))
 root = options.output
@@ -394,9 +398,29 @@ month_names = ("ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "o
 def short_date(day):
     return f"{day.day} {month_names[day.month-1]} {day.year}"
 
+def publish_activity_reference():
+    readme = root / "README.md"
+    markdown = readme.read_text(encoding="utf-8")
+    reference = r'(<img\s+id="actividad"\s+src="dashboard/)(actividad(?:-[a-f0-9]{12})?\.svg)"'
+    matches = list(re.finditer(reference, markdown))
+    if len(matches) != 1:
+        raise ValueError("README.md must contain one activity panel image")
+    previous = matches[0].group(2)
+    content = (assets / "actividad.svg").read_bytes()
+    version = f"actividad-{sha256(content).hexdigest()[:12]}.svg"
+    (assets / version).write_bytes(content)
+    if previous == version:
+        return
+    readme.write_text(
+        re.sub(reference, lambda match: f'{match[1]}{version}"', markdown),
+        encoding="utf-8",
+    )
+    for old in assets.glob("actividad-*.svg"):
+        if re.fullmatch(r"actividad-[a-f0-9]{12}\.svg", old.name) and old.name not in {version, previous}:
+            old.unlink()
+
 
 activity_start = date.fromisoformat(stats["calendar_start"])
-activity_end = date.fromisoformat(stats["calendar_end"])
 counts = stats["days"]
 weeks = [sum(counts[i:i+7]) for i in range(0,len(counts),7)]
 assert len(weeks) == 53
@@ -405,7 +429,11 @@ annual_year = stats["annual_year"]
 annual_as_of = date.fromisoformat(stats["annual_as_of"])
 calendar_scope = "visibles" if stats["calendar_scope"] == "visible" else "públicas"
 
-activity = section("TELEMETRÍA","Actividad en GitHub",f"Total anual al {short_date(annual_as_of)} · Actividad al {short_date(activity_end)}")
+activity_subtitle = f"Total anual al {short_date(annual_as_of)}"
+if published_at := stats.get("published_at"):
+    local_time = datetime.fromisoformat(published_at).astimezone(ZoneInfo("America/Santiago"))
+    activity_subtitle = f"Datos actualizados · {short_date(local_time.date())} · {local_time:%H:%M} (Chile)"
+activity = section("TELEMETRÍA","Actividad en GitHub",activity_subtitle)
 for i,(value,label,note) in enumerate([
     (annual_contributions,"Contribuciones",f"Públicas y privadas · {annual_year}"),
     (stats["public_repos"],"Repositorios públicos","Repositorios propios"),
@@ -486,6 +514,8 @@ svg("actividad","Actividad en GitHub",
     f"{stats['public_repos']} repositorios públicos, {stats['followers']} seguidores y {stats['stars']} estrellas. "
     f"Calendario de contribuciones {calendar_scope}.",
     1361,activity)
+if options.publish_activity:
+    publish_activity_reference()
 
 
 metrics = section("EVALUACIÓN","Rendimiento y visualización","Resultados de Spotify Tracks y StreamView Analytics.")

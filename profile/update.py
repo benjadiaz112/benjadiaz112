@@ -3,7 +3,7 @@ import argparse
 import json
 import os
 import re
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -52,7 +52,11 @@ class ContributionCalendar(HTMLParser):
 
 
 def get(url, api=False):
-    headers = {"User-Agent": "benjadiaz112-profile-dashboard", "Accept-Language": "en-US"}
+    headers = {
+        "User-Agent": "benjadiaz112-profile-dashboard",
+        "Accept-Language": "en-US",
+        "Cache-Control": "no-cache",
+    }
     if api:
         headers["Accept"] = "application/vnd.github+json"
         if token := os.environ.get("GH_TOKEN"):
@@ -117,6 +121,10 @@ def main():
         public_repos(),
         options.include_private,
     )
+    previous_data = {key: value for key, value in previous.items() if key != "published_at"}
+    if updated == previous_data and "published_at" in previous:
+        return
+    updated["published_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     DATA.write_text(json.dumps(updated, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
