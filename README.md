@@ -10,7 +10,7 @@
 
 <img src="dashboard/metricas.svg" width="100%" alt="Spotify Tracks analizó 89.495 canciones. Obtuvo R² de 0,830, MAE de 5,02 y RMSE de 8,50 sobre 17.913 canciones de reserva. StreamView Analytics permite explorar 31.991 títulos." />
 
-<img id="actividad" src="dashboard/actividad-ff895c3e7112.svg" width="100%" alt="Actividad en GitHub. Total anual de contribuciones públicas y privadas, repositorios, seguidores, estrellas, días activos y calendario anonimizado." />
+<img id="actividad" src="dashboard/actividad-e3f132370b52.svg" width="100%" alt="Actividad en GitHub. Total anual de contribuciones públicas y privadas, repositorios, seguidores, estrellas, días activos y calendario anonimizado." />
 
 <img src="dashboard/formacion.svg" width="100%" alt="Formación y certificaciones. Ingeniería en Informática, mención Ciencia de Datos, sexto semestre en Duoc UC. Usando la IA Generativa, Duoc UC, 36 horas, 2026. CEHPC, CSFPC y CAPC, CertiProf, 2026. Microsoft Certified Azure Fundamentals AZ-900, 2026. Formación complementaria en NoSQL y modelado de documentos con MongoDB." />
 
